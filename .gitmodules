@@ -1,0 +1,6 @@
+[submodule "modules/AltoRouter"]
+	path = modules/AltoRouter
+	url = git@github.com:dannyvankooten/AltoRouter.git
+[submodule "modules/h2o-php"]
+	path = modules/h2o-php
+	url = git@github.com:speedmax/h2o-php.git
