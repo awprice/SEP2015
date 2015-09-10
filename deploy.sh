@@ -7,7 +7,7 @@ apt-get -y upgrade
 
 # Install some general packages
 
-apt-get -y install zip unzip nano git build-essential zlib1g-dev libpcre3 libpcre3-dev
+apt-get -y install zip unzip nano git build-essential zlib1g-dev libpcre3 libpcre3-dev mariadb-server
 
 # Install HHVM
 
@@ -46,3 +46,4 @@ ln -s /home/nginx-conf/default /etc/nginx/sites-available/default
 # Finishing up
 
 mkdir /var/www
+mkdir /home/ssl
