@@ -1,6 +1,0 @@
-<?php
-
-	$page["david"] = "bla";
-
-
-?>

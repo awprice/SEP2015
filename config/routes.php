@@ -4,10 +4,6 @@
        echo superHandler('index.php', 'index.html', 'Index', true, false);
     });
 
-    $router->map('GET', '/david', function () {
-       echo superHandler('david/david.php', 'david/david.html', 'david', true, false);
-    });
-
     // Misc routes
 
 	$router->map('GET', '/compile/less', function() {
