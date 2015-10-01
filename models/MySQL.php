@@ -25,6 +25,9 @@ class MySQL {
      */
     function query($query, $data) {
         $statement = $this->pdo->prepare($query);
+        if ($statement === false) {
+            return ['success' => false, 'results' => []];
+        }
         $result = $statement->execute($data);
         if ($result === false) {
             return ['success' => false, 'results' => []];

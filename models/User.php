@@ -5,14 +5,14 @@
         /**
          * Attempts a login by hashing the password and comparing to stored password
          *
-         * @param $userId
+         * @param $id
          * @param $password
          * @return bool
          */
-        static function attemptLogin($userId, $password) {
+        static function attemptLogin($id, $password) {
 
             $mysql = new MySQL();
-            $results = $mysql->query('SELECT password FROM user WHERE userid = :userid', [':userid' => $userId]);
+            $results = $mysql->query('SELECT password FROM user WHERE id = :id', [':id' => $id]);
 
             if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
                 if (self::verifyPassword($password, $results['results']['password'])) {
@@ -31,7 +31,7 @@
          */
         static function isLoggedIn() {
 
-            if (!empty($_SESSION['userId']) && $_SESSION['userId'] != null) {
+            if (!empty($_SESSION['id']) && $_SESSION['id'] != null) {
                 return true;
             }
 
