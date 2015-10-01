@@ -1,6 +1,6 @@
 --USE labourhire;
 
---DROP TABLE advertisement;
+DROP TABLE advertisement;
 
 CREATE TABLE advertisement(
   id INT PRIMARY KEY,
@@ -14,6 +14,5 @@ CREATE TABLE advertisement(
   created TEXT NOT NULL,
   category TEXT NOT NULL,
   salary TEXT NOT NULL,
-  tags TEXT NULL,
-  FOREIGN KEY(owner) REFERENCES user(id)
+  tags TEXT NULL
 );
