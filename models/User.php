@@ -3,6 +3,25 @@
     class User {
 
         /**
+         * Gets a user
+         *
+         * @param $id
+         * @return null
+         */
+        static function getUser($id) {
+
+            $mysql = new MySQL();
+            $results = $mysql->query('SELECT * FROM user WHERE id = :id', [':id' => $id]);
+
+            if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
+                return $results['results'];
+            }
+
+            return null;
+
+        }
+
+        /**
          * Attempts a login by hashing the password and comparing to stored password
          *
          * @param $id

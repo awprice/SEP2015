@@ -14,6 +14,20 @@ $router->map('GET', '/', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET|POST', '/login', function () {
+    $parameters = [
+        'controller' => 'session/login.php',
+        'view' => 'session/login.html',
+        'title' => 'Login',
+        'flashes' => true,
+        'restricted' => false,
+        'registered' => false,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET', '/compile/less', function() {
     require __DIR__ . '/less.compile.php';
 });

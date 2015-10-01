@@ -1,10 +1,10 @@
-USE labourhire;
+--USE labourhire;
 
-DROP TABLE advertisement;
+--DROP TABLE advertisement;
 
 CREATE TABLE advertisement(
-  id INT PRIMARY NOT NULL,
-  owner INT FOREIGN NOT NULL,
+  id INT PRIMARY KEY,
+  owner INT NOT NULL,
   title TEXT NOT NULL,
   startdate TEXT NULL,
   enddate TEXT NULL,
@@ -15,5 +15,5 @@ CREATE TABLE advertisement(
   category TEXT NOT NULL,
   salary TEXT NOT NULL,
   tags TEXT NULL,
-  CONSTRAINT owner_fk FOREIGN KEY (owner) REFERENCES user(id)
+  FOREIGN KEY(owner) REFERENCES user(id)
 );

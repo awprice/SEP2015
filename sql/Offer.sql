@@ -1,13 +1,13 @@
-USE labourhire;
+--USE labourhire;
 
-DROP TABLE offer;
+--DROP TABLE offer;
 
 CREATE TABLE offer(
-  id INT PRIMARY NOT NULL,
-  owner INT FOREIGN NOT NULL,
-  advertisement INT FOREIGN NOT NULL,
+  id INT PRIMARY KEY,
+  owner INT NOT NULL,
+  advertisement INT NOT NULL,
   description TEXT NULL,
   status INT NOT NULL,
-  CONSTRAINT owner_fk FOREIGN KEY (owner) REFERENCES user(id),
-  CONSTRAINT owner_fk FOREIGN KEY (advertisement) REFERENCES advertisement(id)
+  FOREIGN KEY(owner) REFERENCES user(id),
+  FOREIGN KEY(advertisement) REFERENCES advertisement(id)
 );
