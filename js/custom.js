@@ -6,7 +6,7 @@
 
         // Restrict all inputs with class .numeric to only enter numbers
         $('input.numeric').numeric();
-
+		$('[data-toggle="tooltip"]').tooltip(); 
 
         // Compile less and reload styles every 2 seconds
         //setInterval(compileLess, 5000);
