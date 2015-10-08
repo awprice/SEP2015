@@ -7,7 +7,6 @@ $router->map('GET', '/', function () {
         'title' => 'Index',
         'flashes' => true,
         'restricted' => false,
-        'registered' => false,
         'header' => true,
         'footer' => true,
     ];
@@ -21,9 +20,23 @@ $router->map('GET|POST', '/login', function () {
         'title' => 'Login',
         'flashes' => true,
         'restricted' => false,
-        'registered' => false,
         'header' => true,
         'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
+// AJAX ROUTES
+
+$router->map('GET', '/api/user', function () {
+    $parameters = [
+        'controller' => 'api/user/user.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => false,
+        'restricted' => true,
+        'header' => false,
+        'footer' => false,
     ];
     echo superHandler($parameters);
 });
@@ -42,11 +55,11 @@ $router->map('GET|POST', '/signup', function () {
     echo superHandler($parameters);
 });
 
-$router->map('GET|POST', '/profile', function () {
+$router->map('GET|POST', '/about', function () {
     $parameters = [
-        'controller' => 'user/profile.php',
-        'view' => 'user/profile.html',
-        'title' => 'My Profile',
+        'controller' => 'index.php',
+        'view' => 'about.html',
+        'title' => 'About',
         'flashes' => true,
         'restricted' => false,
         'registered' => false,
@@ -73,7 +86,7 @@ function superHandler($parameters) {
     $viewDirectory = __DIR__ . '/../views/';
 
     // Initialise our page array
-    $page = Session::init($parameters['title'], $parameters['flashes'], $parameters['restricted'], $parameters['registered']);
+    $page = Session::init($parameters['title'], $parameters['flashes'], $parameters['restricted']);
 
     // if parameters are passed, then add them
     if (array_key_exists('parameters', $parameters)) {
