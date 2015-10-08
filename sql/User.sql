@@ -1,8 +1,8 @@
 USE labourhire;
 
-DROP TABLE offer;
-DROP TABLE advertisement;
-DROP TABLE user;
+--DROP TABLE offer;
+--DROP TABLE advertisement;
+--DROP TABLE user;
 
 CREATE TABLE user(
   id INT PRIMARY KEY,

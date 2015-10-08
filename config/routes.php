@@ -28,6 +28,20 @@ $router->map('GET|POST', '/login', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET|POST', '/signup', function () {
+    $parameters = [
+        'controller' => 'session/signup.php',
+        'view' => 'session/signup.html',
+        'title' => 'Sign Up',
+        'flashes' => true,
+        'restricted' => false,
+        'registered' => false,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET', '/compile/less', function() {
     require __DIR__ . '/less.compile.php';
 });

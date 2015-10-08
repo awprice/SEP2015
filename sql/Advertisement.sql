@@ -1,6 +1,6 @@
 USE labourhire;
 
-DROP TABLE advertisement;
+--DROP TABLE advertisement;
 
 CREATE TABLE advertisement(
   id INT PRIMARY KEY,

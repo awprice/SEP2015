@@ -1,6 +1,6 @@
 USE labourhire;
 
-DROP TABLE offer;
+--DROP TABLE offer;
 
 CREATE TABLE offer(
   id INT PRIMARY KEY,
