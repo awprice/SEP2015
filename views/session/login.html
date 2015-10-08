@@ -1,11 +1,11 @@
-<div class=" container login-container"
+<div class="container login-container">
 	<form class="form-login" method="POST">
 		<h2 class="form-login-heading">Login</h2>
 		<hr>
 
 		<div class="form-group has-feedback">
-			<label for="login[username]" class="sr-only">Username</label>
-			<input type="text" id="login[studentId]" class="form-control numeric input-lg" name="login[username]" required autofocus placeholder="Username">
+			<label for="login[email]" class="sr-only">Email</label>
+			<input type="email" id="login[email]" class="form-control input-lg" name="login[email]" required autofocus placeholder="Email">
 			<i class="fa fa-user form-control-feedback"></i>
 		</div>
 
@@ -15,12 +15,7 @@
 			<i class="fa fa-lock form-control-feedback"></i>
 		</div>
 
-		<div class="checkbox">
-			<label>
-				<input type="checkbox" value="yes" name="login[rememberMe]"> Remember me
-			</label>
-		</div>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 	</form>
-	<p>Not registered? <a href="signup">Sign Up!</a></p>
+	<p>Not registered? <a href="/signup">Sign Up!</a></p>
 </div>
