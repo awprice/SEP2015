@@ -69,6 +69,20 @@ $router->map('GET|POST', '/about', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET|POST', '/profile', function () {
+    $parameters = [
+        'controller' => 'user/profile.php',
+        'view' => 'user/profile.html',
+        'title' => 'My Profile',
+        'flashes' => true,
+        'restricted' => false,
+        'registered' => false,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET', '/compile/less', function() {
     require __DIR__ . '/less.compile.php';
 });
