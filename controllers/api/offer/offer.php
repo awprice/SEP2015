@@ -2,7 +2,7 @@
 
 header('Content-Type: application/json');
 
-$advertisement = Advertisement::getAdvertisement($page['parameters']['id']);
+$offer = Offer::getOffer($page['parameters']['id'], User::getId());
 $success = true;
 
 if ($advertisement == null) {

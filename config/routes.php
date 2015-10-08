@@ -99,7 +99,21 @@ $router->map('GET', '/api/advertisement/[i:id]', function ($id) {
     echo superHandler($parameters);
 });
 
-
+$router->map('GET', '/api/offer/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'api/offer/offer.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => false,
+        'restricted' => true,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
 
 $router->map('GET', '/compile/less', function() {
     require __DIR__ . '/less.compile.php';
