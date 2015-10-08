@@ -37,6 +37,19 @@ $router->map('GET', '/api/user', function () {
         'restricted' => true,
         'header' => false,
         'footer' => false,
+    echo superHandler($parameters);
+});
+
+$router->map('GET|POST', '/signup', function () {
+    $parameters = [
+        'controller' => 'session/signup.php',
+        'view' => 'session/signup.html',
+        'title' => 'Sign Up',
+        'flashes' => true,
+        'restricted' => false,
+        'registered' => false,
+        'header' => true,
+        'footer' => true,
     ];
     echo superHandler($parameters);
 });
