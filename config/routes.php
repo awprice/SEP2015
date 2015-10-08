@@ -26,21 +26,6 @@ $router->map('GET|POST', '/login', function () {
     echo superHandler($parameters);
 });
 
-// AJAX ROUTES
-
-$router->map('GET', '/api/user', function () {
-    $parameters = [
-        'controller' => 'api/user/user.php',
-        'view' => null,
-        'title' => null,
-        'flashes' => false,
-        'restricted' => true,
-        'header' => false,
-        'footer' => false,
-    ];
-    echo superHandler($parameters);
-});
-
 $router->map('GET|POST', '/signup', function () {
     $parameters = [
         'controller' => 'session/signup.php',
@@ -82,6 +67,39 @@ $router->map('GET|POST', '/profile', function () {
     ];
     echo superHandler($parameters);
 });
+
+// AJAX ROUTES
+
+$router->map('GET', '/api/user', function () {
+    $parameters = [
+        'controller' => 'api/user/user.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => false,
+        'restricted' => true,
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
+
+$router->map('GET', '/api/advertisement/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'api/advertisement/advertisement.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => false,
+        'restricted' => false,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
+
+
 
 $router->map('GET', '/compile/less', function() {
     require __DIR__ . '/less.compile.php';
