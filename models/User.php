@@ -8,9 +8,12 @@
          * @param $id
          * @return null
          */
-        static function getUser($id) {
+        static function getUser($id = null) {
 
             $mysql = new MySQL();
+            if ($id == null) {
+                $id = self::getId();
+            }
             $results = $mysql->query('SELECT * FROM user WHERE id = :id', [':id' => $id]);
 
             if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
@@ -77,6 +80,10 @@
          */
         static function verifyPassword($password, $hash) {
             return password_verify($password, $hash);
+        }
+
+        static function getId() {
+            return $_SESSION['id'];
         }
 
     }

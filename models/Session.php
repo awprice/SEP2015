@@ -23,16 +23,6 @@
                 self::redirect('/login');
             }
 
-            // Redirect to login if user's session has expired
-            if ($restricted && self::hasExpired()) {
-                self::destroySession();
-                self::setError('Your session has expired, please log back in.');
-                self::redirect('/login');
-            } else {
-                // extend the session
-                self::setExpiry();
-            }
-
             if ($flashes) {
                 $page['flash'] = self::getFlashes();
             }
@@ -95,31 +85,6 @@
         static function redirect($location) {
             header('Location: ' . $location);
             exit();
-        }
-
-        /**
-         * Sets the expiry time of the session
-         */
-        static function setExpiry() {
-
-            if ($_SESSION['expiry'] != 0 || !array_key_exists('expiry', $_SESSION)) {
-                $_SESSION['expiry'] = time() + 3600;
-            }
-
-        }
-
-        /**
-         * Returns whether a session has expired
-         *
-         * @return bool
-         */
-        static function hasExpired() {
-
-            if ($_SESSION['expiry'] != 0 && time() > $_SESSION['expiry']) {
-                return true;
-            }
-
-            return false;
         }
 
         /**
