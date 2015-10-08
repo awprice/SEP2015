@@ -1,4 +1,4 @@
---USE labourhire;
+USE labourhire;
 
 DROP TABLE advertisement;
 
