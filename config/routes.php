@@ -54,6 +54,20 @@ $router->map('GET|POST', '/signup', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET|POST', '/about', function () {
+    $parameters = [
+        'controller' => 'index.php',
+        'view' => 'about.html',
+        'title' => 'About',
+        'flashes' => true,
+        'restricted' => false,
+        'registered' => false,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET', '/compile/less', function() {
     require __DIR__ . '/less.compile.php';
 });
