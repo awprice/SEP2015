@@ -115,6 +115,19 @@ $router->map('GET', '/api/offer/[i:id]', function ($id) {
     echo superHandler($parameters);
 });
 
+$router->map('GET', '/api/offers', function () {
+    $parameters = [
+        'controller' => 'api/offer/offers.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => false,
+        'restricted' => true,
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET', '/compile/less', function() {
     require __DIR__ . '/less.compile.php';
 });

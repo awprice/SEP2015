@@ -2,15 +2,15 @@
 
 header('Content-Type: application/json');
 
-$offer = Offer::getOffer($page['parameters']['id'], User::getId());
+$offers = Offer::getOffersForUser(User::getId());
 $success = true;
 
-if ($offer == null) {
+if ($offers == null) {
     $success = false;
 }
 
 echo json_encode([
-    'results' => $offer,
+    'results' => $offers,
     'success' => $success,
 ]);
 exit();
