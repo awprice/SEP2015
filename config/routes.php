@@ -37,6 +37,7 @@ $router->map('GET', '/api/user', function () {
         'restricted' => true,
         'header' => false,
         'footer' => false,
+    ];
     echo superHandler($parameters);
 });
 
