@@ -2,7 +2,7 @@
 
     	date_default_timezone_set("Australia/Sydney");
 
-    	$GLOBALS['websiteTitle'] = '';
+    	$GLOBALS['websiteTitle'] = 'LabourHire';
 
     	$GLOBALS['mysql_host'] = 'localhost';
     	$GLOBALS['mysql_database'] = 'labourhire';
