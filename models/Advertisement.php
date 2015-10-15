@@ -3,6 +3,8 @@
     class Advertisement {
 
         /**
+         * Gets an advertisement by id
+         *
          * @param $id
          * @return null
          */

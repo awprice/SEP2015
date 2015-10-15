@@ -39,6 +39,45 @@ $router->map('GET', '/logout', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET|POST', '/signup', function () {
+    $parameters = [
+        'controller' => 'session/signup.php',
+        'view' => 'session/signup.html',
+        'title' => 'Sign Up',
+        'flashes' => true,
+        'restricted' => false,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
+$router->map('GET|POST', '/about', function () {
+    $parameters = [
+        'controller' => 'index.php',
+        'view' => 'about.html',
+        'title' => 'About',
+        'flashes' => true,
+        'restricted' => false,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
+$router->map('GET|POST', '/profile', function () {
+    $parameters = [
+        'controller' => 'user/profile.php',
+        'view' => 'user/profile.html',
+        'title' => 'My Profile',
+        'flashes' => true,
+        'restricted' => true,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 // AJAX ROUTES
 
 $router->map('GET', '/api/user', function () {
@@ -54,30 +93,47 @@ $router->map('GET', '/api/user', function () {
     echo superHandler($parameters);
 });
 
-$router->map('GET|POST', '/signup', function () {
+$router->map('GET', '/api/advertisement/[i:id]', function ($id) {
     $parameters = [
-        'controller' => 'session/signup.php',
-        'view' => 'session/signup.html',
-        'title' => 'Sign Up',
-        'flashes' => true,
+        'controller' => 'api/advertisement/advertisement.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => false,
         'restricted' => false,
-        'registered' => false,
-        'header' => true,
-        'footer' => true,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => false,
+        'footer' => false,
     ];
     echo superHandler($parameters);
 });
 
-$router->map('GET|POST', '/about', function () {
+$router->map('GET', '/api/offer/[i:id]', function ($id) {
     $parameters = [
-        'controller' => 'index.php',
-        'view' => 'about.html',
-        'title' => 'About',
-        'flashes' => true,
-        'restricted' => false,
-        'registered' => false,
-        'header' => true,
-        'footer' => true,
+        'controller' => 'api/offer/offer.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => false,
+        'restricted' => true,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
+
+$router->map('GET', '/api/offers', function () {
+    $parameters = [
+        'controller' => 'api/offer/offers.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => false,
+        'restricted' => true,
+        'header' => false,
+        'footer' => false,
     ];
     echo superHandler($parameters);
 });

@@ -3,15 +3,16 @@
 class Offer {
 
     /**
-     * Gets the offer for a specific id
+     * Gets the offer for a specific id for the specified user
      *
      * @param $id
+     * @param $owner
      * @return null
      */
-    static function getOffer($id) {
+    static function getOffer($id, $owner) {
 
         $mysql = new MySQL();
-        $results = $mysql->query('SELECT * FROM offer WHERE id = :id', [':id' => $id]);
+        $results = $mysql->query('SELECT * FROM offer WHERE id = :id and owner = :owner', [':id' => $id, ':owner' => $owner]);
 
         if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
             return $results['results'];
