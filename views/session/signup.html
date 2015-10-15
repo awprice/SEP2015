@@ -12,12 +12,6 @@
         <hr>
 
         <div class="form-group has-feedback">
-            <label for="signup[name]" class="sr-only">Name</label>
-            <input type="text" id="signup[name]" class="form-control input-lg" name="signup[name]" required autofocus placeholder="Name">
-            <i class="fa fa-user form-control-feedback"></i>
-        </div>
-
-        <div class="form-group has-feedback">
             <label for="signup[email]" class="sr-only">Email</label>
             <input type="email" id="signup[email]" class="form-control input-lg" name="signup[email]" required placeholder="Email">
             <i class="fa fa-user form-control-feedback"></i>
@@ -33,11 +27,35 @@
             <input type="password" id="signup[confirm-password]" class="form-control input-lg" name="signup[confirm-password]" required placeholder="Confirm Password">
             <i class="fa fa-lock form-control-feedback"></i>
         </div>
+		<hr>
+		
+		<div class="form-group signup-radials">
+            <input type="radio" name="profile[user-type]" value="worker" checked> <a href="#" data-toggle="tooltip" data-placement="top" title="You are labourer looking for work">Worker</a>
+            <input type="radio" name="profile[user-type]" value="employer" checked> <a href="#" data-toggle="tooltip" data-placement="top" title="You are an employer looking for labourers">Employer</a>
+        </div>
+		
+		<div class="form-group has-feedback">
+            <label for="signup[name]" class="sr-only">Name</label>
+            <input type="text" id="signup[name]" class="form-control input-lg" name="signup[name]" required autofocus placeholder="Name">
+            <i class="fa fa-user form-control-feedback"></i>
+        </div>
+		
+		<div class="form-group has-feedback" id="su_company_name">
+            <label for="signup[companyname]" class="sr-only">Company Name</label>
+            <input type="text" id="su_company_name_input" class="form-control input-lg" name="signup[companyname]" placeholder="Company Name">
+            <i class="fa fa-building form-control-feedback"></i>
+        </div>
 
+		<div class="form-group has-feedback" id="su_company_location">
+            <label for="signup[companylocation]" class="sr-only">Company Location</label>
+            <input type="text" id="su_company_location_input" class="form-control input-lg" name="signup[companyname]" placeholder="Company Location">
+            <i class="fa fa-map-marker form-control-feedback"></i>
+        </div>
+		
         <div class="form-group has-feedback">
             <label for="signup[contactno]" class="sr-only">Contact Number</label>
             <input type="text" id="signup[contactno]" class="form-control input-lg numeric" name="signup[contactno]" required placeholder="Contact Number">
-            <i class="fa fa-user form-control-feedback"></i>
+            <i class="fa fa-phone form-control-feedback"></i>
         </div>
 
         <div class="form-group has-feedback">
@@ -45,20 +63,15 @@
             <textarea class="form-control input-lg" rows="3" id="signup[aboutme]" name="signup[aboutme]" required placeholder="About Me"></textarea>
         </div>
 
-        <div class="form-group has-feedback">
+        <div class="form-group has-feedback" id="su_qualifications">
             <label for="signup[qualifications]" class="sr-only">Qualifications</label>
             <textarea class="form-control input-lg" rows="3" id="signup[qualifications]" name="signup[qualifications]" placeholder="Qualifications"></textarea>
         </div>
 
-        <div class="form-group has-feedback">
+        <div class="form-group has-feedback" id="su_website">
             <label for="signup[website]" class="sr-only">Website</label>
             <input type="text" id="signup[website]" class="form-control input-lg" name="signup[website]" placeholder="Website">
-            <i class="fa fa-user form-control-feedback"></i>
-        </div>
-
-        <div class="form-group signup-radials">
-            <input type="radio" name="profile[user-type]" value="0" checked> <a href="#" data-toggle="tooltip" data-placement="top" title="You are labourer looking for work">Worker</a>
-            <input type="radio" name="profile[user-type]" value="1" checked> <a href="#" data-toggle="tooltip" data-placement="top" title="You are an employer looking for labourers">Employer</a>
+            <i class="fa fa-desktop form-control-feedback"></i>
         </div>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
