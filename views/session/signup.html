@@ -3,8 +3,8 @@
 	<hr>
 	
 	<div class="form-group has-feedback">
-        <label for="signup[email]" class="sr-only">Username</label>
-        <input type="text" id="signup[email]" class="form-control numeric input-lg" name="signup[email]" required autofocus placeholder="Email">
+        <label for="signup[email]" class="sr-only">Email</label>
+        <input type="text" id="signup[email]" class="form-control input-lg" name="signup[email]" required autofocus placeholder="Email">
         <i class="fa fa-user form-control-feedback"></i>
     </div>
 	
@@ -18,11 +18,41 @@
         <input type="password" id="signup[confirm-password]" class="form-control input-lg" name="signup[confirm-password]" required placeholder="Confirm Password">
         <i class="fa fa-lock form-control-feedback"></i>
     </div>
+	<hr>
 	
 	<div class="form-group signup-radials">
-		<input type="radio" name="profile[user-type]" value="0" checked> <a href="#" data-toggle="tooltip" data-placement="top" title="You are labourer looking for work">Worker</a>
-		<input type="radio" name="profile[user-type]" value="1" checked> <a href="#" data-toggle="tooltip" data-placement="top" title="You are an employer looking for labourers">Employer</a>
+		<input type="radio" name="user_type" value="worker" checked> <a href="#" data-toggle="tooltip" data-placement="top" title="You are labourer looking for work">Worker</a>
+		<input type="radio" name="user_type" value="employer" checked> <a href="#" data-toggle="tooltip" data-placement="top" title="You are an employer looking for labourers">Employer</a>
 	</div>
+	
+	<div class="form-group has-feedback">
+        <label for="signup[fullname]" class="sr-only">Full Name</label>
+        <input type="text" id="signup[fullname]" class="form-control input-lg" name="signup[fullname]" required autofocus placeholder="Full Name">
+        <i class="fa fa-user form-control-feedback"></i>
+    </div>
+	
+	<div class="form-group has-feedback">
+        <label for="signup[contact]" class="sr-only">Contact Number</label>
+        <input type="text" id="signup[contact]" class="form-control input-lg" name="signup[contact]" required autofocus placeholder="Contact Number">
+        <i class="fa fa-phone form-control-feedback"></i>
+    </div>
+	
+	<div class="form-group has-feedback">
+        <label for="signup[website]" class="sr-only">Website</label>
+        <input type="text" id="signup[website]" class="form-control input-lg" name="signup[website]" required autofocus placeholder="Website">
+        <i class="fa fa-desktop form-control-feedback"></i>
+    </div>
+	
+	<div class="form-group has-feedback">
+        <label for="signup[about]" class="sr-only">About Me</label>
+        <textarea type="text" id="signup[about]" class="form-control" name="signup[about]" required autofocus placeholder="About"></textarea>
+	</div>
+	
+	<div class="form-group has-feedback">
+        <label for="signup[qualifications]" class="sr-only">Qualifications</label>
+        <input type="text" id="signup[qualifications]" class="form-control input-lg" name="signup[qualifications]" autofocus placeholder="Qualifications">
+        <i class="fa fa-certificate form-control-feedback"></i>
+    </div>
 	
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
 </form>
