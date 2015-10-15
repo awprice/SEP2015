@@ -3,6 +3,21 @@
     class User {
 
         /**
+         * For converting camelcase keys to the keys used in the sql database
+         *
+         * @var array
+         */
+        private static $mysql_keys = [
+            'name' => 'name',
+            'email' => 'email',
+            'password' => 'password',
+            'contactNo' => 'contactno',
+            'aboutMe' => 'aboutme',
+            'qualifications' => 'qualifications',
+            'website' => 'website'
+        ];
+
+        /**
          * Gets a user
          *
          * @param $id
@@ -106,6 +121,37 @@
             }
 
             return null;
+        }
+
+        /**
+         * Set a user's attribute
+         *
+         * @param $key
+         * @param $value
+         * @return bool
+         */
+        static function setAttribute($key, $value) {
+
+            if (array_key_exists($key, self::$mysql_keys)) {
+
+                // Make sure we encrypt the password
+                if (self::$mysql_keys[$key] == 'password') {
+                    $value = self::hashPassword($value);
+                }
+
+                $mysql = new MySQL();
+                $results = $mysql->query('UPDATE user SET ' . self::$mysql_keys[$key] . ' = :attribute_value WHERE id = :id',
+                    [':attribute_value' => $value, ':id' => self::getId()]);
+
+                // If it worked, return true
+                if ($results['success'] == true) {
+                    return true;
+                }
+
+            }
+
+            return false;
+
         }
 
     }
