@@ -26,6 +26,19 @@ $router->map('GET|POST', '/login', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET', '/logout', function () {
+    $parameters = [
+        'controller' => 'session/logout.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => false,
+        'restricted' => true,
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
+
 // AJAX ROUTES
 
 $router->map('GET', '/api/user', function () {
