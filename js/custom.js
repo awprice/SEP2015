@@ -10,6 +10,19 @@
 
         // Compile less and reload styles every 2 seconds
         //setInterval(compileLess, 5000);
+		$("input:radio[name='user_type']").change(
+			function(){
+				var value = $(this).val();
+				if(value == "worker") 
+				{
+					console.log("User set to Worker");
+				} else if(value == "employer")
+				{
+					console.log("User set to Employer");
+				}					
+			}
+		);  
+		
 
     });
 
@@ -25,5 +38,9 @@
         console.log('Reloading css');
         document.styleSheets.reload();
     }
+	
+	function login() {
+		profile.getDetailsRequest();
+	}
 
 })(jQuery);
