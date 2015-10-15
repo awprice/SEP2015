@@ -154,6 +154,77 @@
 
         }
 
+        /**
+         * Create a new user
+         *
+         * @param $details
+         * @return bool
+         */
+        static function createUser($details) {
+
+            // Make sure the email doesn't already exist
+            if (self::getUserId($details['email']) != null) {
+                Session::setError('Email has already been used before, please use a different one.');
+                Session::redirect('/signup');
+            }
+
+            $id = self::getNextId();
+
+            if ($details['user-type'] == 1) {
+                $usertype = 1;
+            } else {
+                $usertype = 0;
+            }
+
+            if ($details['password'] == $details['confirm-password']) {
+                $password = self::hashPassword($details['password']);
+            } else {
+                $password = '';
+                Session::setError('Passwords do not match, please try again.');
+                Session::redirect('/signup');
+            }
+
+            $mysql = new MySQL();
+            $results = $mysql->query('INSERT INTO user(id, usertype, name, email, password, contactno, aboutme, qualifications, website) VALUES (:id, :usertype, :name, :email, :password, :contactno, :aboutme, :qualifications, :website)', [
+                ':id' => $id,
+                ':usertype' => $usertype,
+                ':name' => $details['name'],
+                ':email' => $details['email'],
+                ':password' => $password,
+                ':contactno' => $details['contactno'],
+                ':aboutme' => $details['aboutme'],
+                ':qualifications' => $details['qualifications'],
+                ':website' => $details['website']
+            ]);
+
+            if ($results['success'] == true) {
+                return true;
+            }
+
+            return false;
+
+        }
+
+        /**
+         * Get the id for the next inserted user
+         *
+         * @return null
+         */
+        static function getNextId() {
+
+            $mysql = new MySQL();
+            $results = $mysql->query('SELECT id FROM user ORDER BY id DESC', null);
+
+            if ($results['success'] == true) {
+                $id = (int) $results['results']['id'];
+                $id++;
+                return $id;
+            }
+
+            return null;
+
+        }
+
     }
 
 ?>
