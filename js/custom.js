@@ -10,6 +10,10 @@
 
         // Compile less and reload styles every 2 seconds
         //setInterval(compileLess, 5000);
+		
+		//Sign Up
+		signup.init(); 
+		
 
     });
 
@@ -25,5 +29,9 @@
         console.log('Reloading css');
         document.styleSheets.reload();
     }
+	
+	function login() {
+		profile.getDetailsRequest();
+	}
 
 })(jQuery);

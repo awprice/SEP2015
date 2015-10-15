@@ -1,8 +1,12 @@
 var profile = (function(){
 	var editMode = false;
+	var name = "Bill";
+	var email = "test@email.com" 
+	
 	
 	return {
 		setMode: function(mode){
+			
 			if(mode == "edit")
 			{
 				editMode = true;
@@ -11,6 +15,9 @@ var profile = (function(){
 			}
 				
 			
-		}
+		},
+		getDetailsRequest: function(){},
+		displayDetails: function() {},
+		
 	}
 })
