@@ -13,7 +13,7 @@
 		
 		//Sign Up
 		signup.init(); 
-		
+		profile.getDetailsRequest();
 
     });
 
@@ -29,9 +29,5 @@
         console.log('Reloading css');
         document.styleSheets.reload();
     }
-	
-	function login() {
-		profile.getDetailsRequest();
-	}
 
 })(jQuery);

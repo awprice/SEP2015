@@ -71,7 +71,7 @@ $router->map('GET|POST', '/profile', function () {
         'view' => 'user/profile.html',
         'title' => 'My Profile',
         'flashes' => true,
-        'restricted' => true,
+        'restricted' => false,
         'header' => true,
         'footer' => true,
     ];
