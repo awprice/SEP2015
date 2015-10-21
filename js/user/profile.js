@@ -11,6 +11,7 @@ var profile = (function(){
 		$("#userContactNumber").text(contact);
 		$("#userAbout").text(about);
 		$("#userQualifications").text(qualifications);
+		console.log(data.name);
 	return {
 		setMode: function(mode){
 			
@@ -24,7 +25,8 @@ var profile = (function(){
 			
 		},
 		getDetailsRequest: function(){
-			$.ajax({dataType: "json",
+			$.ajax({
+					dataType: "json",
 					url: '/api/user',
 					data: {},
 					success: displayDetails});
