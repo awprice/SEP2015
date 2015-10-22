@@ -32,6 +32,25 @@ class MySQL {
         if ($result === false) {
             return ['success' => false, 'results' => []];
         }
+        return ['success' => true, 'results' => $statement->fetch(PDO::FETCH_ASSOC)];
+    }
+
+    /**
+     * Executes an sql query and fetches all results
+     *
+     * @param $query
+     * @param $data
+     * @return array
+     */
+    function queryAll($query, $data) {
+        $statement = $this->pdo->prepare($query);
+        if ($statement === false) {
+            return ['success' => false, 'results' => []];
+        }
+        $result = $statement->execute($data);
+        if ($result === false) {
+            return ['success' => false, 'results' => []];
+        }
         return ['success' => true, 'results' => $statement->fetchAll(PDO::FETCH_ASSOC)];
     }
 
