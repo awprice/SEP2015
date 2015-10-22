@@ -25,3 +25,9 @@ Restricted: `True`
 Method: `GET`  
 Description: Gets all of the current users offers  
 Restricted: `True`
+
+### `/api/advertisements/<page>`
+
+Method: `GET`
+Description: Gets all advertisements, ordered by the start date of the advertisement (limited by 10 per page)
+Restricted: `False`
