@@ -6,6 +6,6 @@
     	$GLOBALS['mysql_host'] = 'localhost';
     	$GLOBALS['mysql_database'] = 'labourhire';
     	$GLOBALS['mysql_user'] = 'root';
-    	$GLOBALS['mysql_pass'] = 'password';
+    	$GLOBALS['mysql_pass'] = 'ubuntu';
     	$GLOBALS['mysql_sqlite'] = false;
 ?>
