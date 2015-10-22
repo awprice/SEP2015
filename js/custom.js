@@ -14,6 +14,15 @@
 		//Sign Up
 		signup.init(); 
 		profile.getDetailsRequest();
+        $.ajax({
+            dataType: "json",
+            method: "GET",
+            url: '/api/advertisements/1',
+            success: function(data){
+                console.log(data.results);
+                $('#job-offers').text(data.results[0].title);
+            }});
+
 
     });
 

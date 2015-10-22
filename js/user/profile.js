@@ -49,7 +49,7 @@ var profile = (function(){
 					url: '/api/user',
 					data: {},
 					success: displayDetails});
-		},
+		}
 		
 	}
 })();
