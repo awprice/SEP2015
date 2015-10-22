@@ -138,6 +138,22 @@ $router->map('GET', '/api/offers', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET', '/api/advertisements/[i:page]', function ($page) {
+    $parameters = [
+        'controller' => 'api/advertisement/advertisements.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => false,
+        'restricted' => false,
+        'parameters' => [
+            'page' => $page,
+        ],
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET', '/compile/less', function() {
     require __DIR__ . '/less.compile.php';
 });

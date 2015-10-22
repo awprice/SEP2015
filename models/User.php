@@ -197,11 +197,7 @@
                 ':website' => $details['website']
             ]);
 
-            if ($results['success'] == true) {
-                return true;
-            }
-
-            return false;
+            return $results['success'];
 
         }
 

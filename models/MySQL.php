@@ -32,7 +32,7 @@ class MySQL {
         if ($result === false) {
             return ['success' => false, 'results' => []];
         }
-        return ['success' => true, 'results' => $statement->fetch(PDO::FETCH_ASSOC)];
+        return ['success' => true, 'results' => $statement->fetchAll(PDO::FETCH_ASSOC)];
     }
 
 }
