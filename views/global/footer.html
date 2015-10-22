@@ -5,6 +5,24 @@
 	<script src="/js/user/profile.js"></script>
 	<script src="/js/session/signup.js"></script>
     <script src="/js/custom.js"></script>
-    <script src="/js/css_auto-reload.js"></script>
+    <script src="/js/toastr.min.js"></script>
+    <script>
+        var errors = [];
+        {% for error in page.flash.error %}
+            errors.push('{{error}}');
+            {% endfor %}
+            for (var error in errors) {
+                toastr.error(errors[error]);
+            }
+    </script>
+    <script>
+        var successes = [];
+        {% for success in page.flash.success %}
+            successes.push('{{success}}');
+            {% endfor %}
+            for (var success in successes) {
+                toastr.success(successes[success]);
+            }
+    </script>
   </body>
 </html>

@@ -1,12 +1,5 @@
 <div class="container signup-container">
 
-    {% for error in page.flash.error %}
-        <div class="alert alert-danger" role="alert">{{ error }}</div>
-    {% endfor %}
-    {% for success in page.flash.success %}
-        <div class="alert alert-success" role="alert">{{ success }}</div>
-    {% endfor %}
-
     <form class="form-signup" method="POST">
         <h2 class="form-signup-heading">Sign Up</h2>
         <hr>
