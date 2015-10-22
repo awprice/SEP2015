@@ -1,9 +1,20 @@
 <div class="container">
 	<h1>Profile</h1>
-	<div><p id="userName">Test Name</p></div>
-	<div><p id="userEmail">Test Email</p></div>
-	<div><p id="userContactNumber">Test Contact Number</p></div>
-	<div><p id="userAbout">Test About Me</p></div>
-	<div><p id="userQualifications">Test Qualifications</p></div>
-</div>
+	<div id="displayDetails">
+		<div id="details_name"><h4>Name</h4><p></p></div>
+		<div id="details_email"><h4>Email</h4><p></p></div>
+		<div id="details_contactno"><h4>Contact Number</h4><p></p></div>
+		<div id="details_about"><h4>About</h4><p id="userAbout"></p></div>
+		<div id="details_qualifications" style="display: none"><h4>Qualifications</h4><p></p></div>
+		<div id="details_website" style="display:none"><h4>Website</h4><p></p></div>
+		<button class="btn btn-primary" id="editDetailsButton">Edit Details</button>
+	</div>
+	<div id="editDetails" style="display: none;">
+		<div id="edit_name"><h4>Name</h4><input type="text" id="name_input"></input></div>
+		<div id="edit_email"><h4>Email</h4><input type="text" id="email_input"></input></div>
+		<div id="edit_contactno"><h4>Contact Number</h4><input type="text" id="contactno_input"></input></div>
+		<div id="edit_about"><h4>About</h4><textarea id="about_input"></textarea></div>
+		<div id="edit_qualifications" style="display: none"><h4>Qualifications</h4><textarea id="qualifications_input"></textarea></div>
+		<div id="edit_website" style="display: none"><h4>Website</h4><input type="text" id="website_input"></input></div>
+	</div>
 </div>
