@@ -20,6 +20,22 @@
             profile.getOffersRequest();
         }
         //Home
+        var getAdvertDetails = function(id){
+
+        };
+        var initAdListeners = function(){
+            $(".ad-info-button").click(function(){
+                var parentAdvert = $('.advert-panel');
+                var advertId = $(this).closest(parentAdvert).attr('id');
+                $.ajax({
+                    dataType: "json",
+                    method: "GET",
+                    url: '/api/advertisement/' + advertId,
+                    success: function(data){
+                        console.log(data.results);
+                    }});
+            });
+        };
         if(window.location.pathname == "/")
         {
             $.ajax({
@@ -30,7 +46,7 @@
                     var htmlBuffer = "";
                     $.each(data.results, function(index, value){
                         console.log(value);
-                        htmlBuffer += "<div class='panel panel-danger offer-panel' id='" + value.id + "'>"
+                        htmlBuffer += "<div class='panel panel-danger advert-panel' id='" + value.id + "'>"
                             +"<div class='panel-heading'>"+ value.title + "</div>"
                             +"<div class='panel-body'>"
                             +   value.description
@@ -39,10 +55,7 @@
                             + "</div>";
                     });
                     $("#job-offers").html(htmlBuffer);
-                    $(".ad-info-button").click(function(){
-                        var parentOffer = $('.offer-panel');
-                        var advertId = $(this).closest(parentOffer).attr('id');
-                    });
+                    initAdListeners();
                 }});
 
         }

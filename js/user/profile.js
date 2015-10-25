@@ -16,7 +16,10 @@ var profile = (function(){
 		{
 			$("#details_website").show().find("p").text(profileData.website);
 		}
+
+		$("#detailsSection").fadeIn();
 	};
+
 	var displayOffers = function(data) {
 		if(data.success){
 			offers = data.results;
@@ -40,12 +43,29 @@ var profile = (function(){
 		$("#edit_email").find("input").val(profileData.email);
 		$("#edit_contactno").find("input").val(profileData.contactno);
 		$("#edit_about").find("textarea").val(profileData.aboutme);
+
+		if(profileData.usertype == "0")
+		{
+			var qualField = $("#edit_qualifications");
+			qualField.find("textarea").val(profileData.qualifications);
+			qualField.show();
+		}else {
+			var websiteField = $("#edit_website");
+			websiteField.find("textarea").val(profileData.website);
+			websiteField.show();
+		}
 	};
 	
 	$("#editDetailsButton").click(function(){
 		$("#displayDetails").hide();
 		displayEdit();
 	});
+	$("#cancelEditDetails").click(function(){
+		$("#editDetails").hide();
+		$("#displayDetails").show();
+
+	});
+
 		
 	return {
 		getDetailsRequest: function(){
