@@ -54,7 +54,10 @@
                             +"</div>"
                             + "</div>";
                     });
-                    $("#job-offers").html(htmlBuffer);
+                    var jobContainer = $("#job-offers");
+                    jobContainer.html(htmlBuffer);
+                    jobContainer.fadeIn();
+
                     initAdListeners();
                 }});
 
