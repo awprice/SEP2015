@@ -13,10 +13,13 @@
 		
 		//Sign Up
 		signup.init();
+        //Profile
         if(window.location.pathname == "/profile")
         {
             profile.getDetailsRequest();
+            profile.getOffersRequest();
         }
+        //Home
         if(window.location.pathname == "/")
         {
             $.ajax({
@@ -27,15 +30,21 @@
                     var htmlBuffer = "";
                     $.each(data.results, function(index, value){
                         console.log(value);
-                        htmlBuffer += "<div class='panel panel-danger offer-panel'>"
+                        htmlBuffer += "<div class='panel panel-danger offer-panel' id='" + value.id + "'>"
                             +"<div class='panel-heading'>"+ value.title + "</div>"
                             +"<div class='panel-body'>"
                             +   value.description
+                            +"<br><button class='btn btn-primary ad-info-button'>Info</button>"
                             +"</div>"
                             + "</div>";
                     });
                     $("#job-offers").html(htmlBuffer);
+                    $(".ad-info-button").click(function(){
+                        var parentOffer = $('.offer-panel');
+                        var advertId = $(this).closest(parentOffer).attr('id');
+                    });
                 }});
+
         }
 
 

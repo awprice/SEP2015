@@ -1,5 +1,7 @@
 var profile = (function(){
 	var profileData;
+	var offers;
+	var advertisements;
 	var displayDetails = function(data) {
 		profileData = data.results;
 		$("#details_name").find("p").text(profileData.name);
@@ -15,7 +17,22 @@ var profile = (function(){
 			$("#details_website").show().find("p").text(profileData.website);
 		}
 	};
-	
+	var displayOffers = function(data) {
+		if(data.success){
+			offers = data.results;
+			$.each(offers, function(index, value){
+				console.log(value);
+			});
+		}
+	};
+	var displayAdvertisements = function(data) {
+		if(data.success){
+			advertisements = data.results;
+			$.each(offers, function(index, value){
+				console.log(value);
+			});
+		}
+	};
 	var displayEdit = function(){
 		$("#editDetails").show();
 		console.log(profileData);
@@ -31,17 +48,6 @@ var profile = (function(){
 	});
 		
 	return {
-		setMode: function(mode){
-			
-			if(mode == "edit")
-			{
-				editMode = true;
-			} else {
-				editMode = false;
-			}
-				
-			
-		},
 		getDetailsRequest: function(){
 			$.ajax({
 					dataType: "json",
@@ -49,7 +55,16 @@ var profile = (function(){
 					url: '/api/user',
 					data: {},
 					success: displayDetails});
-		}
+		},
+		getOffersRequest: function () {
+			$.ajax({
+				dataType: "json",
+				method: "GET",
+				url: '/api/offers',
+				data: {},
+				success: displayOffers});
+		},
+		getAdvertisementsRequest: function(){}
 		
 	}
 })();
