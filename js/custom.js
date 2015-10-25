@@ -12,8 +12,33 @@
         //setInterval(compileLess, 5000);
 		
 		//Sign Up
-		signup.init(); 
-		profile.getDetailsRequest();
+		signup.init();
+        if(window.location.pathname == "/profile")
+        {
+            profile.getDetailsRequest();
+        }
+        if(window.location.pathname == "/")
+        {
+            $.ajax({
+                dataType: "json",
+                method: "GET",
+                url: '/api/advertisements/1',
+                success: function(data){
+                    var htmlBuffer = "";
+                    $.each(data.results, function(index, value){
+                        console.log(value);
+                        htmlBuffer += "<div class='panel panel-danger offer-panel'>"
+                            +"<div class='panel-heading'>"+ value.title + "</div>"
+                            +"<div class='panel-body'>"
+                            +   value.description
+                            +"</div>"
+                            + "</div>";
+                    });
+                    $("#job-offers").html(htmlBuffer);
+                }});
+        }
+
+
 
     });
 
