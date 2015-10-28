@@ -78,6 +78,22 @@ $router->map('GET|POST', '/profile', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET', '/advertisement/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'advertisement/advertisement.php',
+        'view' => 'advertisement/advertisement.html',
+        'title' => 'Advertisement',
+        'flashes' => true,
+        'restricted' => false,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 // AJAX ROUTES
 
 $router->map('GET', '/api/user', function () {

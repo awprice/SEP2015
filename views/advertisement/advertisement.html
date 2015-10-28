@@ -1,0 +1,49 @@
+{% if page.advertisement != null %}
+
+    <div class="container">
+        <br>
+        <br>
+        <h3>{{ page.advertisement.title }}</h3>
+        <h5 class="info-subheading">Advertisement</h5>
+
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-md-3">
+                <h4>{{ page.advertisement.startdate }}</h4>
+                <h5 class="info-subheading">Start Date</h5>
+                <h4>{{ page.advertisement.enddate }}</h4>
+                <h5 class="info-subheading">End Date</h5>
+                <h4>{{ page.advertisement.location }}</h4>
+                <h5 class="info-subheading">Location</h5>
+                <h4>{{ page.advertisement.salary }}</h4>
+                <h5 class="info-subheading">Salary</h5>
+                <h4>{{ page.advertisement.category }}</h4>
+                <h5 class="info-subheading">Category</h5>
+
+                {% for tag in page.advertisement.tags %}
+                    <h5 class="advertisement-tags"><span class="label label-warning"><i class="fa fa-tag"></i> {{ tag }}</span></h5>
+                {% endfor %}
+                <h5 class="info-subheading">Tags</h5>
+
+                <h4>{{ page.advertisement.created }}</h4>
+                <h5 class="info-subheading">Posted On</h5>
+            </div>
+            <div class="col-md-9">
+                <p>{{ page.advertisement.description }}</p>
+                <h5 class="info-subheading">Description</h5>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+
+{% if page.advertisement == null %}
+
+    <div class="container">
+        <br>
+        <div class="alert alert-danger" role="alert"><strong>Unable to find Advertisement</strong> Please check the URL and try again.</div>
+    </div>
+
+{% endif %}
