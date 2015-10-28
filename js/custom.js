@@ -46,15 +46,17 @@
                     var htmlBuffer = "";
                     $.each(data.results, function(index, value){
                         console.log(value);
-                        htmlBuffer += "<div class='panel panel-danger advert-panel' id='" + value.id + "'>"
-                            +"<div class='panel-heading'>"+ value.title + "</div>"
-                            +"<div class='panel-body'>"
+                        htmlBuffer += "<div class='panel panel-warning advert-panel' id='" + value.id + "'>"
+                            + "<div class='panel-heading'>"+ value.title + "</div>"
+                            + "<div class='panel-body'>"
                             +   value.description
-                            +"<br><button class='btn btn-primary ad-info-button'>Info</button>"
-                            +"</div>"
+                            + "</div>"
+                            + "<div class='panel-footer'>"
+                            + "<a href='/advertisement/" + value.id + "' class='btn btn-primary ad-info-button'>Info</a>"
+                            + "</div>"
                             + "</div>";
                     });
-                    var jobContainer = $("#job-offers");
+                    var jobContainer = $("#advertisements-holder");
                     jobContainer.html(htmlBuffer);
                     jobContainer.fadeIn();
 
