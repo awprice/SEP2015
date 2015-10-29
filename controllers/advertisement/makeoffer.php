@@ -4,6 +4,14 @@
  * @var $page
  */
 
+// Make sure the user is a user that can make an offer
+$user = User::getUser();
+
+if ($user['usertype'] != "0") {
+    Session::setError('You are not the correct user type to make an offer');
+    Session::redirect('/');
+}
+
 // Make sure it is a valid advertisement and it can take offers
 $advertisement = Advertisement::getAdvertisement($page['parameters']['id']);
 
