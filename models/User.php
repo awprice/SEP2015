@@ -170,7 +170,7 @@
 
             $id = self::getNextId();
 
-            if ($details['user-type'] == 1) {
+            if ($details['user-type'] == "employer") {
                 $usertype = 1;
             } else {
                 $usertype = 0;
@@ -185,7 +185,7 @@
             }
 
             $mysql = new MySQL();
-            $results = $mysql->query('INSERT INTO user(id, usertype, name, email, password, contactno, aboutme, qualifications, website) VALUES (:id, :usertype, :name, :email, :password, :contactno, :aboutme, :qualifications, :website)', [
+            $results = $mysql->query('INSERT INTO user(id, usertype, name, email, password, contactno, aboutme, qualifications, website, companyname, companylocation) VALUES (:id, :usertype, :name, :email, :password, :contactno, :aboutme, :qualifications, :website, :companyname, :companylocation)', [
                 ':id' => $id,
                 ':usertype' => $usertype,
                 ':name' => $details['name'],
@@ -194,7 +194,10 @@
                 ':contactno' => $details['contactno'],
                 ':aboutme' => $details['aboutme'],
                 ':qualifications' => $details['qualifications'],
-                ':website' => $details['website']
+                ':website' => $details['website'],
+                ':companyname' => $details['companyname'],
+                ':companylocation' => $details['companylocation']
+
             ]);
 
             return $results['success'];

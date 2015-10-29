@@ -110,6 +110,19 @@ $router->map('GET|POST', '/advertisement/makeoffer/[i:id]', function ($id) {
     echo superHandler($parameters);
 });
 
+$router->map('GET', '/offers', function () {
+    $parameters = [
+        'controller' => 'offers/offers.php',
+        'view' => 'offers/offers.html',
+        'title' => 'Offers',
+        'flashes' => true,
+        'restricted' => true,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 // AJAX ROUTES
 
 $router->map('GET', '/api/user', function () {

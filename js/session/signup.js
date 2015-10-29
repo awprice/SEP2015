@@ -1,6 +1,6 @@
 var signup = (function(){
 	var listenForUserType = function(){
-			$("input:radio[name='profile[user-type]']").change(
+			$("input:radio[name='signup[user-type]']").change(
 				function(){
 					var value = $(this).val();
 					if(value == "worker") 
@@ -19,7 +19,7 @@ var signup = (function(){
 	
 	return{
 		init: function(){
-			$("input:radio[name='profile[user-type]'][value='worker']").prop('checked', true);
+			$("input:radio[name='signup[user-type]'][value='worker']").prop('checked', true);
 			this.workerFields();
 			listenForUserType();
 		},
