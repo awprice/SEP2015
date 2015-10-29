@@ -3,7 +3,18 @@
     <div class="container">
         <br>
         <br>
-        <h3>{{ page.advertisement.title }}</h3>
+        <h3>
+            {% if page.advertisement.status == "1" %}
+                <span class="label label-success">Available</span>
+            {% endif %}
+            {% if page.advertisement.status == "2" %}
+                <span class="label label-danger">Closed</span>
+            {% endif %}
+            {{ page.advertisement.title }}
+            {% if page.advertisement.status == "1" %}
+                <a class="btn btn-primary advertisement-make-offer" href="/advertisement/makeoffer/{{ page.advertisement.id}}">Make Offer!</a>
+            {% endif %}
+        </h3>
         <h5 class="info-subheading">Advertisement</h5>
 
         <br>
@@ -35,6 +46,7 @@
                 <h5 class="info-subheading">Description</h5>
             </div>
         </div>
+
     </div>
 
 {% endif %}
