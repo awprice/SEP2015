@@ -94,6 +94,22 @@ $router->map('GET', '/advertisement/[i:id]', function ($id) {
     echo superHandler($parameters);
 });
 
+$router->map('GET|POST', '/advertisement/makeoffer/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'advertisement/makeoffer.php',
+        'view' => 'advertisement/makeoffer.html',
+        'title' => 'Make Offer',
+        'flashes' => true,
+        'restricted' => true,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 // AJAX ROUTES
 
 $router->map('GET', '/api/user', function () {

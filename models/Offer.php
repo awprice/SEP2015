@@ -31,7 +31,7 @@ class Offer {
     static function getOffersForUser($owner) {
 
         $mysql = new MySQL();
-        $results = $mysql->query('SELECT * FROM offer WHERE owner = :owner', [':owner' => $owner]);
+        $results = $mysql->queryAll('SELECT * FROM offer WHERE owner = :owner', [':owner' => $owner]);
 
         if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
             return $results['results'];
