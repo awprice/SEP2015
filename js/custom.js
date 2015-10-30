@@ -13,12 +13,6 @@
 		
 		//Sign Up
 		signup.init();
-        //Profile
-        if(window.location.pathname == "/profile")
-        {
-            profile.getDetailsRequest();
-            profile.getOffersRequest();
-        }
         //Home
         var getAdvertDetails = function(id){
 

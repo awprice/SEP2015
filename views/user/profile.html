@@ -1,8 +1,12 @@
 <div class="container">
 	<h1>Profile</h1>
-	<div id="detailsSection" class="row" style="display: none">
+	<div id="detailsSection" class="row">
 		<div id="displayDetails" class="col-md-6">
 			<div id="details_name"><h4>Name</h4><p>{{page.user.name}}</p></div>
+			{% if page.user.usertype == "1" %}
+			<div id="details_companyname"><h4>Company Name</h4><p>{{page.user.companyname}}</p></div>
+			<div id="details_companylocation"><h4>Company Location</h4><p>{{page.user.companylocation}}</p></div>
+			{% endif %}
 			<div id="details_email"><h4>Email</h4><p>{{page.user.email}}</p></div>
 			<div id="details_contactno"><h4>Contact Number</h4><p>{{page.user.contactno}}</p></div>
 			<div id="details_about"><h4>About</h4><p id="userAbout">{{page.user.aboutme}}</p></div>
@@ -20,15 +24,49 @@
 		</div>
 
 		<div id="editDetails" class="col-md-6" style="display: none;">
-			<div id="edit_name"><h4>Name</h4><input type="text" id="name_input" class="form-control"/></div>
-			<div id="edit_email"><h4>Email</h4><input type="text" id="email_input" class="form-control"/></div>
-			<div id="edit_contactno"><h4>Contact Number</h4><input type="text" id="contactno_input" class="form-control"/></div>
-			<div id="edit_about"><h4>About</h4><textarea id="about_input" class="form-control"></textarea></div>
-			<div id="edit_qualifications" style="display: none"><h4>Qualifications</h4><textarea id="qualifications_input" class="form-control"></textarea></div>
-			<div id="edit_website" style="display: none"><h4>Website</h4><input type="text" id="website_input" class="form-control"/></div>
-			<br>
-			<button class="btn btn-default" id="cancelEditDetails">Cancel</button>
-			<button class="btn btn-primary" id="updateUserDetails">Submit</button>
+			<form  class="form-profile" method="POST">
+				<div class="form-group has-feedback">
+					<label for="profile[name]">Name</label>
+					<input type="text" value="{{page.user.name}}" name="profile[name]" id="profile[name]" required autofocus class="form-control"/>
+				</div>
+				{% if page.user.usertype == "1" %}
+				<div class="form-group has-feedback">
+					<label for="profile[companyname]">Company Name</label>
+					<input type="text" id="profile[companyname]" name="profile[companyname]" value="{{page.user.companyname}}" required class="form-control"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="profile[companylocation]">Company Location</label>
+					<input type="text" id="profile[companylocation]" name="profile[companylocation]" value="{{page.user.companylocation}}" class="form-control"/>
+				</div>
+				{% endif %}
+				<div class="form-group has-feedback">
+					<label for="profile[email]">Email</label>
+					<input type="text" value="{{page.user.email}}" id="profile[email]" name="profile[email]" required class="form-control"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="profile[contactno]">Contact Number</label>
+					<input type="text" value="{{page.user.contactno}}" id="profile[contactno]" name="profile[contactno]" class="form-control" required/>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="profile[aboutme]">About Me</label>
+					<textarea id="profile[aboutme]" name="profile[aboutme]" class="form-control input-lg" rows="3" required>{{page.user.aboutme}}</textarea>
+				</div>
+					{% if page.user.usertype == "0" %}
+				<div class="form-group has-feedback">
+					<label for="profile[qualifications]">Qualifications</label>
+					<textarea id="profile[qualifications]" name="profile[qualifications]" class="form-control input-lg" rows="3" value="{{page.user.qualifications}}"></textarea>
+				</div>
+				{% endif %}
+				{% if page.user.usertype == "1" %}
+				<div class="form-group has-feedback">
+					<label for="profile[website]">Website</label>
+					<input type="text" id="profile[website]" name="profile[website]" value="{{page.user.website}}" class="form-control"/>
+				</div>
+				{% endif %}
+				<br>
+				<button class="btn btn-default" id="cancelEditDetails">Cancel</button>
+				<button class="btn btn-primary" type="submit" id="updateUserDetails">Submit</button>
+			</form>
 		</div>
 		{% if page.user.usertype == "1" %}
 		<div id="adverts" class="col-md-6">

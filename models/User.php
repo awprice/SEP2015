@@ -209,6 +209,33 @@
          *
          * @return null
          */
+        static function updateUser($details) {
+
+            $id = self::getId();
+            $mysql = new MySQL();
+            $results = $mysql->query('UPDATE user SET name = :name,
+                email = :email,
+                contactno = :contactno,
+                aboutme = :aboutme,
+                qualifications = :qualifications,
+                website = :website,
+                companyname = :companyname,
+                companylocation = :companylocation
+                WHERE id = :id', [
+                ':id' => $id,
+                ':name' => $details['name'],
+                ':email' => $details['email'],
+                ':contactno' => $details['contactno'],
+                ':aboutme' => $details['aboutme'],
+                ':qualifications' => $details['qualifications'],
+                ':website' => $details['website'],
+                ':companyname' => $details['companyname'],
+                ':companylocation' => $details['companylocation']
+
+            ]);
+            return $results['success'];
+        }
+
         static function getNextId() {
 
             $mysql = new MySQL();
