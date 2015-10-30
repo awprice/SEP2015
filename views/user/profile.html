@@ -2,12 +2,19 @@
 	<h1>Profile</h1>
 	<div id="detailsSection" class="row" style="display: none">
 		<div id="displayDetails" class="col-md-6">
-			<div id="details_name"><h4>Name</h4><p></p></div>
-			<div id="details_email"><h4>Email</h4><p></p></div>
-			<div id="details_contactno"><h4>Contact Number</h4><p></p></div>
-			<div id="details_about"><h4>About</h4><p id="userAbout"></p></div>
-			<div id="details_qualifications" style="display: none"><h4>Qualifications</h4><p></p></div>
-			<div id="details_website" style="display:none"><h4>Website</h4><p></p></div>
+			<div id="details_name"><h4>Name</h4><p>{{page.user.name}}</p></div>
+			<div id="details_email"><h4>Email</h4><p>{{page.user.email}}</p></div>
+			<div id="details_contactno"><h4>Contact Number</h4><p>{{page.user.contactno}}</p></div>
+			<div id="details_about"><h4>About</h4><p id="userAbout">{{page.user.aboutme}}</p></div>
+
+			{% if page.user.usertype == "0" %}
+			<div id="details_qualifications"><h4>Qualifications</h4><p>{{page.user.qualifications}}</p></div>
+			{% endif %}
+
+			{% if page.user.usertype == "1" %}
+			<div id="details_website"><h4>Website</h4><p>{{page.user.website}}</p></div>
+			{% endif %}
+
 			<br>
 			<button class="btn btn-primary" id="editDetailsButton">Edit Details</button>
 		</div>
@@ -23,8 +30,18 @@
 			<button class="btn btn-default" id="cancelEditDetails">Cancel</button>
 			<button class="btn btn-primary" id="updateUserDetails">Submit</button>
 		</div>
+		{% if page.user.usertype == "1" %}
 		<div id="adverts" class="col-md-6">
-			All the adverts
+			<h2>Advertisements</h2>
 		</div>
+		{% endif %}
+		{% if page.user.usertype == "0" %}
+		<div id="offers" class="col-md-6">
+			<h2>Offers</h2>
+			{% for offer in page.offers %}
+				<h2 class="offer"><span class="label label-warning"> {{ offer.status }}</span></h2>
+			{% endfor %}
+		</div>
+		{% endif %}
 	</div>
 </div>

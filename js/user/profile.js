@@ -4,18 +4,18 @@ var profile = (function(){
 	var advertisements;
 	var displayDetails = function(data) {
 		profileData = data.results;
-		$("#details_name").find("p").text(profileData.name);
-		$("#details_email").find("p").text(profileData.email);
-		$("#details_contactno").find("p").text(profileData.contactno);
-		$("#details_about").find("p").text(profileData.aboutme);
+		//$("#details_name").find("p").text(profileData.name);
+		//$("#details_email").find("p").text(profileData.email);
+		//$("#details_contactno").find("p").text(profileData.contactno);
+		//$("#details_about").find("p").text(profileData.aboutme);
 		
-		if(profileData.usertype == "0")
-		{
-			$("#details_qualifications").show().find("p").text(profileData.qualifications);
-		}else if(profileData.usertype == "1")
-		{
-			$("#details_website").show().find("p").text(profileData.website);
-		}
+		//if(profileData.usertype == "0")
+		//{
+		//	$("#details_qualifications").show().find("p").text(profileData.qualifications);
+		//}else if(profileData.usertype == "1")
+		//{
+		//	$("#details_website").show().find("p").text(profileData.website);
+		//}
 
 		$("#detailsSection").fadeIn();
 	};
