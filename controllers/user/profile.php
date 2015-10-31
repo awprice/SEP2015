@@ -6,6 +6,12 @@ $page['user'] = $user;
 $advertisements = Advertisement::getUserAdvertisements(User::getId());
 $page['advertisements'] = $advertisements;
 
+foreach($page['advertisements'] as &$advertisement) {
+    if (strlen($advertisement['description']) > 150) {
+        $advertisement['description'] = substr($advertisement['description'], 0, 150) . '...';
+    }
+}
+
 $offers = Offer::getOffersForUser(User::getId());
 $page['offers'] = $offers;
 

@@ -41,6 +41,7 @@
             $results = $mysql->queryAll('SELECT * FROM advertisement ORDER BY startdate ASC LIMIT ' . $offset . ', 10', []);
 
             if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
+                // trim the description
                 foreach($results['results'] as &$result) {
                     if (strlen($result['description']) > 150) {
                         $result['description'] = substr($result['description'], 0, 150) . '...';
@@ -126,12 +127,13 @@
         static function createAdvertisement($owner, $title, $startdate, $enddate, $description, $location, $category, $salary, $tags) {
 
             $mysql = new MySQL();
-            $results = $mysql->query('INSERT INTO advertisement(id, owner, title, startdate, enddate, description, location, created, category, salary, tags) VALUES (:id, :owner, :title, :startdate, :enddate, :description, :location, :created, :category, :salary, :tags)', [
+            $results = $mysql->query('INSERT INTO advertisement(id, owner, title, startdate, enddate, status, description, location, created, category, salary, tags) VALUES (:id, :owner, :title, :startdate, :enddate, :status, :description, :location, :created, :category, :salary, :tags)', [
                 ':id' => self::getNextId(),
                 ':owner' => $owner,
                 ':title' => $title,
                 ':startdate' => $startdate,
                 ':enddate' => $enddate,
+                ':status' => 1,
                 ':description' => $description,
                 ':location' => $location,
                 ':created' => time(),
