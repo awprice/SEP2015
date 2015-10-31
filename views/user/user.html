@@ -1,0 +1,80 @@
+{% if page.userProfile != null %}
+
+    <div class="container">
+        <br>
+        <br>
+        <h3>
+            {% if page.userProfile.usertype == "0" %}
+                <span class="label label-primary">Worker</span>
+            {% endif %}
+            {% if page.userProfile.usertype == "1" %}
+                <span class="label label-info">Employer</span>
+            {% endif %}
+            {{ page.userProfile.name }}
+        </h3>
+        <h5 class="info-subheading">Public Profile</h5>
+
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h4><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></h4>
+                <h5 class="info-subheading">Rating</h5>
+                <h4>{{ page.userProfile.aboutme }}</h4>
+                <h5 class="info-subheading">About</h5>
+                {% if page.userProfile.usertype == "0" %}
+                    <h4>{{ page.userProfile.qualifications }}</h4>
+                    <h5 class="info-subheading">About</h5>
+                {% endif %}
+                {% if page.userProfile.usertype == "1" %}
+                    <h4>{{ page.userProfile.companyname }}</h4>
+                    <h5 class="info-subheading">Company Name</h5>
+                    <h4>{{ page.userProfile.companylocation }}</h4>
+                    <h5 class="info-subheading">Company Location</h5>
+                {% endif %}
+                <h4><a href="{{ page.userProfile.website }}" target="_blank">{{ page.userProfile.website }}</a></h4>
+                <h5 class="info-subheading">Website</h5>
+            </div>
+            <div class="col-md-6">
+                {% if page.userProfile.usertype == "1" %}
+                    <h2 style="margin-top: 0">Their Advertisements</h2>
+                    <br>
+                    {% for advertisement in page.advertisements %}
+                    <div class="profile-advertisement-listing">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5>
+                                    {% if advertisement.status == "0" %}
+                                    <span class="label label-warning">Closed</span>
+                                    {% endif %}
+                                    {% if advertisement.status == "1" %}
+                                    <span class="label label-success">Available</span>
+                                    {% endif %}
+                                    {{ advertisement.title }}
+                                </h5>
+                            </div>
+                            <div class="panel-body">
+                                <h5>Description</h5>
+                                <p>{{ advertisement.description }}</p>
+                                <br>
+                                <br>
+                                <a class="btn btn-primary" style="float: right" href="/advertisement/{{ advertisement.id }}">View Advertisement</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+{% endif %}
+
+{% if page.userProfile == null %}
+    <div class="container">
+        <br>
+        <div class="alert alert-danger" role="alert"><strong>Unable to find user</strong> Please check the URL and try again.</div>
+    </div>
+{% endif %}

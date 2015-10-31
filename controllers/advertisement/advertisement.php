@@ -16,6 +16,8 @@ if ($advertisement != null) {
         $tag = trim($tag);
     }
 
+    // get the parent owners details
+    $page['advertisement']['parentOwner'] = User::getUser($advertisement['owner']);
 
 } else {
     $page['advertisement'] = null;

@@ -123,6 +123,22 @@ $router->map('GET', '/offers', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET', '/user/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'user/user.php',
+        'view' => 'user/user.html',
+        'title' => 'User',
+        'flashes' => true,
+        'restricted' => false,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 // AJAX ROUTES
 
 $router->map('GET', '/api/user', function () {
