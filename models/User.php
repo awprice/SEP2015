@@ -205,9 +205,10 @@
         }
 
         /**
-         * Get the id for the next inserted user
+         * Update user with new details
          *
-         * @return null
+         * @param $details
+         * @return mixed
          */
         static function updateUser($details) {
 
@@ -236,6 +237,11 @@
             return $results['success'];
         }
 
+        /**
+         * Get the next user id
+         *
+         * @return int|null
+         */
         static function getNextId() {
 
             $mysql = new MySQL();

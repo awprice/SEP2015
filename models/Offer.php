@@ -60,13 +60,39 @@ class Offer {
         }
 
         $mysql = new MySQL();
-        $results = $mysql->query('INSERT INTO offer(owner, advertisement, description, status) VALUES (:owner, :advertisement, :description, 0)', [':owner' => $owner, ':advertisement' => $advertisement, ':description' => $description]);
+        $results = $mysql->query('INSERT INTO offer(id, owner, advertisement, description, status) VALUES (:id, :owner, :advertisement, :description, :status)', [
+            ':id' => self::getNextId(),
+            ':owner' => $owner,
+            ':advertisement' => $advertisement,
+            ':description' => $description,
+            ':status' => 0
+        ]);
 
         if ($results['success'] == true) {
             return true;
         }
 
         return false;
+
+    }
+
+    /**
+     * Get the next offer id
+     *
+     * @return int|null
+     */
+    static function getNextId() {
+
+        $mysql = new MySQL();
+        $results = $mysql->query('SELECT id FROM offer ORDER BY id DESC', null);
+
+        if ($results['success'] == true) {
+            $id = (int) $results['results']['id'];
+            $id++;
+            return $id;
+        }
+
+        return null;
 
     }
 

@@ -1,24 +1,16 @@
 <?php
 
 $user = User::getUser();
+$page['user'] = $user;
 
-if($user != null)
-{
+$advertisements = Advertisement::getUserAdvertisements(User::getId());
+$page['advertisements'] = $advertisements;
 
-    $page['user'] = $user;
+$offers = Offer::getOffersForUser(User::getId());
+$page['offers'] = $offers;
 
-    $offers = Offer::getOffersForUser(User::getId());
-
-    $advertisements = Advertisement::getUserAdvertisements(User::getId());
-    if($advertisements != null)
-    {
-        $page['advertisements'] = $advertisements;
-    }
-
-    if($offers != null)
-    {
-        $page['offers'] = $offers;
-    }
+foreach($page['offers'] as &$offer) {
+    $offer['parentAdvertisement'] = Advertisement::getAdvertisement($offer['advertisement']);
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -28,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Session::setSuccess('Details updated successfully!');
         Session::redirect('/');
     }
+
     Session::setError('Unable to update details, please try again.');
     Session::redirect('/profile');
 }

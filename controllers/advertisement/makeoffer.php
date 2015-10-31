@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($newOffer) {
         Session::setSuccess('Successfully added offer!');
-        Session::redirect('/offers');
+        Session::redirect('/profile');
     }
 
     Session::setError('Unable to create offer, an unknown error occured, please try again');
