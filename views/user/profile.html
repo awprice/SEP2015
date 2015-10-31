@@ -54,7 +54,7 @@
 					{% if page.user.usertype == "0" %}
 				<div class="form-group has-feedback">
 					<label for="profile[qualifications]">Qualifications</label>
-					<textarea id="profile[qualifications]" name="profile[qualifications]" class="form-control input-lg" rows="3" value="{{page.user.qualifications}}"></textarea>
+					<textarea id="profile[qualifications]" name="profile[qualifications]" class="form-control input-lg" rows="3" value="{{page.user.qualifications}}">{{page.user.qualifications}}</textarea>
 				</div>
 				{% endif %}
 				{% if page.user.usertype == "1" %}
@@ -64,20 +64,25 @@
 				</div>
 				{% endif %}
 				<br>
-				<button class="btn btn-default" id="cancelEditDetails">Cancel</button>
+				<button class="btn btn-default" type="reset" id="cancelEditDetails">Cancel</button>
 				<button class="btn btn-primary" type="submit" id="updateUserDetails">Submit</button>
 			</form>
 		</div>
 		{% if page.user.usertype == "1" %}
 		<div id="adverts" class="col-md-6">
 			<h2>Advertisements</h2>
+			{% for advertisement in page.advertisements %}
+				<p class="advertisement"> {{ advertisement.title }}</p>
+				<a class="btn btn-default" href="advertisement/{{advertisement.id}}">Info</a>
+			{% endfor %}
 		</div>
 		{% endif %}
 		{% if page.user.usertype == "0" %}
 		<div id="offers" class="col-md-6">
 			<h2>Offers</h2>
 			{% for offer in page.offers %}
-				<h2 class="offer"><span class="label label-warning"> {{ offer.status }}</span></h2>
+				<h5 class="offer"> {{ offer.description }}</h5>
+				<a class="btn btn-default" href="advertisement/{{offer.advertisement}}">View Ad</a>
 			{% endfor %}
 		</div>
 		{% endif %}

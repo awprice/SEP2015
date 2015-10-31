@@ -9,6 +9,12 @@ if($user != null)
 
     $offers = Offer::getOffersForUser(User::getId());
 
+    $advertisements = Advertisement::getUserAdvertisements(User::getId());
+    if($advertisements != null)
+    {
+        $page['advertisements'] = $advertisements;
+    }
+
     if($offers != null)
     {
         $page['offers'] = $offers;
@@ -16,7 +22,6 @@ if($user != null)
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    Session::setSuccess('Test');
     $updateUser = User::updateUser($_POST['profile']);
 
     if ($updateUser) {

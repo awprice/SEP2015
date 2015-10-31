@@ -48,6 +48,18 @@
 
         }
 
+        static function getUserAdvertisements($id)
+        {
+            $mysql = new MySQL();
+            $results = $mysql->queryAll('SELECT * FROM advertisement WHERE owner = :id', [':id' => $id]);
+
+            if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
+                return $results['results'];
+            }
+
+            return null;
+        }
+
         /**
          * Get the total amount of advertisements
          *
