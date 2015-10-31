@@ -40,6 +40,11 @@
                         <a class="page-scroll" href="/about">About Us</a>
                     </li>
                     {% if page.loggedin == true %}
+                        {% if page.user.usertype == "1" %}
+                            <li>
+                                <a class="page-scroll" href="/advertisement/create"><i class="fa fa-plus"></i> Create Advertisement</a>
+                            </li>
+                        {% endif %}
                         <li>
                             <a class="page-scroll" href="/profile">Profile</a>
                         </li>
