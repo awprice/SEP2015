@@ -41,6 +41,11 @@
             $results = $mysql->queryAll('SELECT * FROM advertisement ORDER BY startdate ASC LIMIT ' . $offset . ', 10', []);
 
             if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
+                foreach($results['results'] as &$result) {
+                    if (strlen($result['description']) > 150) {
+                        $result['description'] = substr($result['description'], 0, 150) . '...';
+                    }
+                }
                 return $results['results'];
             }
 
@@ -48,6 +53,12 @@
 
         }
 
+        /**
+         * Get all of the advertisements for a user
+         *
+         * @param $id
+         * @return null
+         */
         static function getUserAdvertisements($id)
         {
             $mysql = new MySQL();
@@ -75,6 +86,61 @@
             }
 
             return null;
+
+        }
+
+        /**
+         * Get the next advertisement id
+         *
+         * @return int|null
+         */
+        static function getNextId() {
+
+            $mysql = new MySQL();
+            $results = $mysql->query('SELECT id FROM advertisement ORDER BY id DESC', null);
+
+            if ($results['success'] == true) {
+                $id = (int) $results['results']['id'];
+                $id++;
+                return $id;
+            }
+
+            return null;
+
+        }
+
+        /**
+         * Create an advertisement
+         *
+         * @param $owner
+         * @param $title
+         * @param $startdate
+         * @param $enddate
+         * @param $description
+         * @param $location
+         * @param $category
+         * @param $salary
+         * @param $tags
+         * @return mixed
+         */
+        static function createAdvertisement($owner, $title, $startdate, $enddate, $description, $location, $category, $salary, $tags) {
+
+            $mysql = new MySQL();
+            $results = $mysql->query('INSERT INTO advertisement(id, owner, title, startdate, enddate, description, location, created, category, salary, tags) VALUES (:id, :owner, :title, :startdate, :enddate, :description, :location, :created, :category, :salary, :tags)', [
+                ':id' => self::getNextId(),
+                ':owner' => $owner,
+                ':title' => $title,
+                ':startdate' => $startdate,
+                ':enddate' => $enddate,
+                ':description' => $description,
+                ':location' => $location,
+                ':created' => time(),
+                ':category' => $category,
+                ':salary' => $salary,
+                ':tags' => $tags
+            ]);
+
+            return $results['success'];
 
         }
 

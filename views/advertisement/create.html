@@ -1,0 +1,52 @@
+<br>
+<br>
+<div class="container">
+    <form method="POST" style="width: 700px;">
+        <h2>Create Advertisement</h2>
+        <br>
+        <br>
+
+        <div class="form-group has-feedback">
+            <label for="advertisement[title]" class="sr-only">Title</label>
+            <input type="text" id="advertisement[title]" class="form-control input-lg" name="advertisement[title]" required autofocus placeholder="Title">
+        </div>
+
+        <div class="form-group has-feedback">
+            <h4>Start and End date+time</h4>
+            <input style="width: 44%; display: inline-block" type="datetime-local" id="advertisement[startdate]" class="form-control input-lg" name="advertisement[startdate]" required placeholder="Start date">
+            <h4 style="display: inline-block; margin: 0px 25px"> to </h4>
+            <input style="width: 44%; display: inline-block" type="datetime-local" id="advertisement[enddate]" class="form-control input-lg" name="advertisement[enddate]" required placeholder="End date">
+        </div>
+
+        <div class="form-group has-feedback">
+            <label for="advertisement[description]" class="sr-only">Description</label>
+            <textarea id="advertisement[description]" name="advertisement[description]" class="form-control input-lg" required placeholder="Description" rows="6"></textarea>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label for="advertisement[location]" class="sr-only">Location</label>
+            <input type="text" id="advertisement[location]" class="form-control input-lg" name="advertisement[location]" required placeholder="Location">
+        </div>
+
+        <div class="form-group has-feedback">
+            <label for="advertisement[category]" class="sr-only">Category</label>
+            <input type="text" id="advertisement[category]" class="form-control input-lg" name="advertisement[category]" required placeholder="Category">
+        </div>
+
+        <div class="form-group has-feedback">
+            <label for="advertisement[salary]" class="sr-only">Salary</label>
+            <input type="text" id="advertisement[salary]" class="form-control input-lg" name="advertisement[salary]" required placeholder="Salary">
+        </div>
+
+        <div class="form-group has-feedback">
+            <label for="advertisement[tags]" class="sr-only">Salary</label>
+            <input type="text" id="advertisement[tags]" class="form-control input-lg" name="advertisement[tags]" required placeholder="Tags">
+            <h6>Seperate tags with a comma</h6>
+        </div>
+
+
+        <br>
+        <br>
+        <button class="btn btn-lg btn-primary" type="submit">Create Advertisement</button>
+    </form>
+</div>

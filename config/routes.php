@@ -110,6 +110,19 @@ $router->map('GET|POST', '/advertisement/makeoffer/[i:id]', function ($id) {
     echo superHandler($parameters);
 });
 
+$router->map('GET|POST', '/advertisement/create', function ($id) {
+    $parameters = [
+        'controller' => 'advertisement/create.php',
+        'view' => 'advertisement/create.html',
+        'title' => 'Create Advertisement',
+        'flashes' => true,
+        'restricted' => true,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET', '/offers', function () {
     $parameters = [
         'controller' => 'offers/offers.php',
