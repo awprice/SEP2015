@@ -146,6 +146,40 @@
 
         }
 
+        /**
+         * Close an advertisement
+         *
+         * @param $id
+         * @return mixed
+         */
+        static function close($id) {
+
+            $mysql = new MySQL();
+            $results = $mysql->query('UPDATE advertisement SET status = 2 WHERE id = :id', [
+                ':id' => $id
+            ]);
+
+            return $results['success'];
+
+        }
+
+        /**
+         * Open an advertisement
+         *
+         * @param $id
+         * @return mixed
+         */
+        static function open($id) {
+
+            $mysql = new MySQL();
+            $results = $mysql->query('UPDATE advertisement SET status = 1 WHERE id = :id', [
+                ':id' => $id
+            ]);
+
+            return $results['success'];
+
+        }
+
 
     }
 

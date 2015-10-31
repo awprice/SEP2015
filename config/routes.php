@@ -123,6 +123,38 @@ $router->map('GET|POST', '/advertisement/create', function ($id) {
     echo superHandler($parameters);
 });
 
+$router->map('GET', '/advertisement/close/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'advertisement/close.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => null,
+        'restricted' => true,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
+
+$router->map('GET', '/advertisement/open/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'advertisement/open.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => null,
+        'restricted' => true,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET', '/offers', function () {
     $parameters = [
         'controller' => 'offers/offers.php',

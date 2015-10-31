@@ -17,7 +17,13 @@
                 {% endif %}
             {% endif %}
             {% if page.advertisement.owner == page.user.id %}
-                <a class="btn btn-primary advertisement-make-offer" href="/offers/view/{{ page.advertisement.id }}">View Offers</a>
+                {% if page.advertisement.status == "1" %}
+                    <a class="btn btn-danger advertisement-control-button" href="/advertisement/close/{{ page.advertisement.id }}">Close Advertisement</a>
+                {% endif %}
+                {% if page.advertisement.status == "2" %}
+                    <a class="btn btn-success advertisement-control-button" href="/advertisement/open/{{ page.advertisement.id }}">Open Advertisement</a>
+                {% endif %}
+                <a class="btn btn-primary advertisement-control-button" href="/offers/view/{{ page.advertisement.id }}">View Offers</a>
             {% endif %}
         </h3>
         <h5 class="info-subheading">Advertisement, Posted by <a href="/user/{{ page.advertisement.parentOwner.id }}">{{ page.advertisement.parentOwner.name }}</a></h5>
