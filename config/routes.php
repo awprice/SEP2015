@@ -65,6 +65,19 @@ $router->map('GET|POST', '/about', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET|POST', '/faq', function () {
+    $parameters = [
+        'controller' => 'index.php',
+        'view' => 'faq.html',
+        'title' => 'FAQ',
+        'flashes' => true,
+        'restricted' => false,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET|POST', '/profile', function () {
     $parameters = [
         'controller' => 'user/profile.php',
