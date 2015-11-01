@@ -54,11 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     if ($newRating) {
-        // complete offer
-        if (Offer::completeOffer($offer['id'])) {
-            Session::setSuccess('Successfully created rating!');
-            Session::redirect('/profile');
-        }
+        Session::setSuccess('Successfully created rating!');
+        Session::redirect('/profile');
     }
 
     Session::setError('Unable to create rating, an unknown error occured, please try again');

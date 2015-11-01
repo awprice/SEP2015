@@ -23,6 +23,25 @@ class Offer {
     }
 
     /**
+     * Gets the offer for a specific id
+     *
+     * @param $id
+     * @return null
+     */
+    static function getOfferSingle($id) {
+
+        $mysql = new MySQL();
+        $results = $mysql->query('SELECT * FROM offer WHERE id = :id', [':id' => $id]);
+
+        if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
+            return $results['results'];
+        }
+
+        return null;
+
+    }
+
+    /**
      * Gets all offers for a specific owner
      *
      * @param $owner
@@ -106,6 +125,55 @@ class Offer {
 
         $mysql = new MySQL();
         $results = $mysql->query('UPDATE offer SET status = 3 WHERE id = :id', [
+            ':id' => $id
+        ]);
+
+        return $results['success'];
+
+    }
+
+    static function getOffersForAdvertisement($id) {
+
+        $mysql = new MySQL();
+        $results = $mysql->queryAll('SELECT * FROM offer WHERE advertisement = :advertisement', [
+            ':advertisement' => $id,
+        ]);
+
+        if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
+            return $results['results'];
+        }
+
+        return null;
+
+    }
+
+    /**
+     * Accept an offer
+     *
+     * @param $id
+     * @return mixed
+     */
+    static function acceptOffer($id) {
+
+        $mysql = new MySQL();
+        $results = $mysql->query('UPDATE offer SET status = 1 WHERE id = :id', [
+            ':id' => $id
+        ]);
+
+        return $results['success'];
+
+    }
+
+    /**
+     * Decline an offer
+     *
+     * @param $id
+     * @return mixed
+     */
+    static function declineOffer($id) {
+
+        $mysql = new MySQL();
+        $results = $mysql->query('UPDATE offer SET status = 2 WHERE id = :id', [
             ':id' => $id
         ]);
 

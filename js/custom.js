@@ -70,9 +70,9 @@
                 body = $(panel).find('.panel-body');
 
             if ($(body).is(':hidden')) {
-                $(body).slideDown();
+                $(body).slideDown('fast');
             } else {
-                $(body).slideUp();
+                $(body).slideUp('fast');
             }
         });
 

@@ -197,6 +197,54 @@ $router->map('GET|POST', '/offer/complete/[i:id]', function ($id) {
     echo superHandler($parameters);
 });
 
+$router->map('GET', '/offers/view/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'offers/view.php',
+        'view' => 'offers/view.html',
+        'title' => 'View Offers',
+        'flashes' => true,
+        'restricted' => true,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
+$router->map('GET', '/offer/accept/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'offers/accept.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => null,
+        'restricted' => true,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
+
+$router->map('GET', '/offer/decline/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'offers/decline.php',
+        'view' => null,
+        'title' => null,
+        'flashes' => null,
+        'restricted' => true,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => false,
+        'footer' => false,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET', '/user/[i:id]', function ($id) {
     $parameters = [
         'controller' => 'user/user.php',
