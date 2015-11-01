@@ -180,6 +180,27 @@
 
         }
 
+        /**
+         * Search advertisement titles
+         *
+         * @param $terms
+         * @return null
+         */
+        static function searchAdvertisement($terms) {
+
+            $mysql = new MySQL();
+            $results = $mysql->queryAll('SELECT * FROM advertisement WHERE title LIKE :terms', [
+                ':terms' => '%' . $terms . '%'
+            ]);
+
+            if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
+                return $results['results'];
+            }
+
+            return null;
+
+        }
+
 
     }
 

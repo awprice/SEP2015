@@ -1,0 +1,41 @@
+<div class="container">
+    <br>
+    <br>
+    <h2>Search for Advertisement</h2>
+    <br>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search..." name="query" id="home-search-input" required autofocus value="{{ page.query }}">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" id="home-search" type="submit">Search</button>
+            </span>
+        </div>
+    <br>
+
+    {% if page.advertisements != null %}
+        {% for advertisement in page.advertisements %}
+            <a href="/advertisement/{{ advertisement.id }}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {% if advertisement.status == "1" %}
+                                <span class="label label-success">Available</span>
+                            {% endif %}
+                            {% if advertisement.status == "2" %}
+                                <span class="label label-danger">Closed</span>
+                            {% endif %}
+                            {{ advertisement.title }}
+                        </h3>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    {% endif %}
+
+    {% if page.advertisements == null %}
+        <h4>No results found.</h4>
+    {% endif %}
+
+    <br>
+    <h4 style="float: right">{{ page.resultSize }} Results</h4>
+
+</div>

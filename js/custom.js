@@ -76,6 +76,19 @@
             }
         });
 
+        $('#home-search').click(function() {
+            var query = $('#home-search-input').val();
+            window.location.href = "/search/" + query;
+        });
+
+        $('#home-search-input').keypress(function (e) {
+            if (e.which == 13) {
+                var query = $('#home-search-input').val();
+                window.location.href = "/search/" + query;
+                return false;
+            }
+        });
+
     });
 
     function compileLess() {

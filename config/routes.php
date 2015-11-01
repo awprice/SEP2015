@@ -274,7 +274,29 @@ $router->map('GET', '/user/[i:id]', function ($id) {
     echo superHandler($parameters);
 });
 
-// AJAX ROUTES
+$router->map('GET', '/search/[:query]', function ($query) {
+    $parameters = [
+        'controller' => 'advertisement/search.php',
+        'view' => 'advertisement/search.html',
+        'title' => 'Search',
+        'flashes' => true,
+        'restricted' => false,
+        'parameters' => [
+            'query' => $query,
+        ],
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
+/**
+ *
+ *
+ *  AJAX ROUTES
+ *
+ *
+ */
 
 $router->map('GET', '/api/user', function () {
     $parameters = [
