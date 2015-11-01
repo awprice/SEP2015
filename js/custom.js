@@ -65,6 +65,17 @@
             scoreName: 'rating[score]'
         });
 
+        $('.panel-listing .panel-heading').click(function () {
+            var panel = $(this).parents('.panel-listing'),
+                body = $(panel).find('.panel-body');
+
+            if ($(body).is(':hidden')) {
+                $(body).slideDown();
+            } else {
+                $(body).slideUp();
+            }
+        });
+
     });
 
     function compileLess() {
