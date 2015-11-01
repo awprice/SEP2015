@@ -116,14 +116,24 @@
 									{% if offer.status == "2" %}
 										<span class="label label-danger">Denied</span>
 									{% endif %}
+									{% if offer.status == "3" %}
+										<span class="label label-default">Completed</span>
+									{% endif %}
 									{{ offer.parentAdvertisement.title }}
 								</h5>
 							</div>
 							<div class="panel-body">
 								<h5>Offer Description</h5>
 								<p>{{ offer.description }}</p>
-								<br>
-								<br>
+								{% if offer.status == "1" %}
+									<hr>
+									<h5>Employer Details</h5>
+									<h6 style="margin-left: 10px">{{ offer.ownerDetails.name }}</h6>
+									<h6 style="margin-left: 10px">{{ offer.ownerDetails.email }}</h6>
+									<h6 style="margin-left: 10px">{{ offer.ownerDetails.contactno }}</h6>
+									<hr>
+									<a class="btn btn-success" href="/offer/complete/{{ offer.id }}">Complete</a>
+								{% endif %}
 								<a class="btn btn-primary" style="float: right" href="/advertisement/{{ offer.advertisement }}">View Advertisement</a>
 							</div>
 						</div>
