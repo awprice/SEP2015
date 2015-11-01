@@ -116,14 +116,72 @@
 									{% if offer.status == "2" %}
 										<span class="label label-danger">Denied</span>
 									{% endif %}
+									{% if offer.status == "3" %}
+										<span class="label label-default">Completed</span>
+									{% endif %}
 									{{ offer.parentAdvertisement.title }}
 								</h5>
 							</div>
 							<div class="panel-body">
 								<h5>Offer Description</h5>
 								<p>{{ offer.description }}</p>
-								<br>
-								<br>
+								{% if offer.status == "1" %}
+									<hr>
+									<h5>Employer Details</h5>
+									<h6 style="margin-left: 10px">{{ offer.ownerDetails.name }}</h6>
+									<h6 style="margin-left: 10px">{{ offer.ownerDetails.email }}</h6>
+									<h6 style="margin-left: 10px">{{ offer.ownerDetails.contactno }}</h6>
+									<hr>
+									<a class="btn btn-success" href="/offer/complete/{{ offer.id }}">Complete</a>
+								{% endif %}
+								{% if offer.status == "3" %}
+									<hr>
+									<h5>Employer Details</h5>
+									<h6 style="margin-left: 10px">{{ offer.ownerDetails.name }}</h6>
+									<h6 style="margin-left: 10px">{{ offer.ownerDetails.email }}</h6>
+									<h6 style="margin-left: 10px">{{ offer.ownerDetails.contactno }}</h6>
+									<hr>
+									<h5>Your Rating for <a href="/user/{{ offer.ownerDetails.id }}">{{ offer.ownerDetails.name }}</a></h5>
+									{% if offer.yourRating != null %}
+										<p>{{ offer.yourRating.comment }}</p>
+										<h6>Comments</h6>
+										<h4>
+											{% for star in offer.yourRating.rating %}
+												{% if star == "0" %}
+													<i class="fa fa-star-o"></i>
+												{% endif %}
+												{% if star == "1" %}
+													<i class="fa fa-star"></i>
+												{% endif %}
+											{% endfor %}
+										</h4>
+										<h6>Rating</h6>
+									{% endif %}
+									{% if offer.yourRating == null %}
+										<h6 style="color: #999">No rating provided</h6>
+									{% endif %}
+									<hr>
+									<h5><a href="/user/{{ offer.ownerDetails.id }}">{{ offer.ownerDetails.name }}</a>'s Rating for You</h5>
+									{% if offer.theirRating != null %}
+										<p>{{ offer.theirRating.comment }}</p>
+										<h6>Comments</h6>
+										<h4>
+											{% for star in offer.theirRating.rating %}
+												{% if star == "0" %}
+													<i class="fa fa-star-o"></i>
+												{% endif %}
+												{% if star == "1" %}
+													<i class="fa fa-star"></i>
+												{% endif %}
+											{% endfor %}
+										</h4>
+										<h6>Rating</h6>
+									{% endif %}
+									{% if offer.theirRating == null %}
+										<h6 style="color: #999">No rating provided</h6>
+									{% endif %}
+									<br>
+								{% endif %}
 								<a class="btn btn-primary" style="float: right" href="/advertisement/{{ offer.advertisement }}">View Advertisement</a>
 							</div>
 						</div>

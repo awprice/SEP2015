@@ -13,7 +13,7 @@
             {{ page.advertisement.title }}
             {% if page.advertisement.status == "1" %}
                 {% if page.user.usertype != "1" %}
-                    <a class="btn btn-primary advertisement-make-offer" href="/advertisement/makeoffer/{{ page.advertisement.id}}">Make Offer!</a>
+                    <a class="btn btn-primary advertisement-control-button" href="/advertisement/makeoffer/{{ page.advertisement.id}}">Make Offer!</a>
                 {% endif %}
             {% endif %}
             {% if page.advertisement.owner == page.user.id %}

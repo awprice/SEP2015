@@ -181,6 +181,22 @@ $router->map('GET', '/offers', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET|POST', '/offer/complete/[i:id]', function ($id) {
+    $parameters = [
+        'controller' => 'offers/complete.php',
+        'view' => 'offers/complete.html',
+        'title' => 'Complete Offer',
+        'flashes' => true,
+        'restricted' => true,
+        'parameters' => [
+            'id' => $id,
+        ],
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET', '/user/[i:id]', function ($id) {
     $parameters = [
         'controller' => 'user/user.php',

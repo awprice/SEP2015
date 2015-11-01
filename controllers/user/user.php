@@ -8,6 +8,12 @@ $user = User::getUser($page['parameters']['id']);
 
 if ($user != null) {
     $page['userProfile'] = $user;
+
+    // get the user's rating
+    $rating = Rating::getUserRating($user['id']);
+    $page['userProfile']['rating'] = Rating::getStarsArray($rating);
+
+    // Get the user's advertisements if applicable
     if ($user['usertype'] == "1") {
 
         $advertisements = Advertisement::getUserAdvertisements($user['id']);

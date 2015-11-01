@@ -19,7 +19,16 @@
 
         <div class="row">
             <div class="col-md-6">
-                <h4><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></h4>
+                <h4>
+                    {% for star in page.userProfile.rating %}
+                        {% if star == "0" %}
+                            <i class="fa fa-star-o"></i>
+                        {% endif %}
+                        {% if star == "1" %}
+                            <i class="fa fa-star"></i>
+                        {% endif %}
+                    {% endfor %}
+                </h4>
                 <h5 class="info-subheading">Rating</h5>
                 <h4>{{ page.userProfile.aboutme }}</h4>
                 <h5 class="info-subheading">About</h5>
