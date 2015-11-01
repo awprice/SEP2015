@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (User::attemptLogin($_POST['login']['email'], $_POST['login']['password'])) {
             $_SESSION['id'] = User::getUserId($_POST['login']['email']);
             Session::setSuccess('You have successfully been logged in.');
-            Session::redirect('/');
+            Session::redirect('/profile');
         } else {
             Session::setError('Your Email or Password was incorrect or the account does not exist, please try again.');
             Session::redirect('/login');

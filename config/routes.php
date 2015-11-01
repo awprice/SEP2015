@@ -13,6 +13,19 @@ $router->map('GET', '/', function () {
     echo superHandler($parameters);
 });
 
+$router->map('GET', '/404', function () {
+    $parameters = [
+        'controller' => '404.php',
+        'view' => '404.html',
+        'title' => '404 Page Not Found',
+        'flashes' => true,
+        'restricted' => false,
+        'header' => true,
+        'footer' => true,
+    ];
+    echo superHandler($parameters);
+});
+
 $router->map('GET|POST', '/login', function () {
     $parameters = [
         'controller' => 'session/login.php',

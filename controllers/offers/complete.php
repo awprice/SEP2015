@@ -84,6 +84,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($newRating) {
+
+        // try and complete the offer
+        Offer::completeOffer($offer['id']);
+
         Session::setSuccess('Successfully created rating!');
         if ($page['user']['usertype'] == "1") {
             Session::redirect('/advertisement/' . $offer['advertisement']);

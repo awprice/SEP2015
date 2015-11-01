@@ -25,8 +25,7 @@
         	header('Content-Type: ' . $content_types[$extension]);
         	readfile(__DIR__ . $_SERVER["REQUEST_URI"]);
    	} else {
-        	http_response_code(404);
-        	echo '404 Not Found';
+			Session::redirect('/404');
     	}
 
 ?>

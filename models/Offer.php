@@ -116,19 +116,20 @@ class Offer {
     }
 
     /**
-     * Complete an offer
+     * Complete an offer if both ratings have been completed
      *
      * @param $id
-     * @return mixed
      */
     static function completeOffer($id) {
 
-        $mysql = new MySQL();
-        $results = $mysql->query('UPDATE offer SET status = 3 WHERE id = :id', [
-            ':id' => $id
-        ]);
-
-        return $results['success'];
+        $offer = self::getOfferSingle($id);
+        $advertisement = Advertisement::getAdvertisement($offer['advertisement']);
+        if (Rating::getRating($id, $offer['owner']) != null && Rating::getRating($id, $advertisement['owner']) != null) {
+            $mysql = new MySQL();
+            $results = $mysql->query('UPDATE offer SET status = 3 WHERE id = :id', [
+                ':id' => $id
+            ]);
+        }
 
     }
 
