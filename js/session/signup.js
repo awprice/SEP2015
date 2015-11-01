@@ -30,6 +30,8 @@ var signup = (function(){
 			$('#su_company_name_input').prop('required', false);
 			$('#su_company_location').hide();
 			$('#su_company_location_input').prop('required', false);
+			$('#su_availability_input').prop('required', true);
+			$('#su_availability').show();
 		},
 		employerFields: function(){
 			$('#su_website').show();
@@ -38,6 +40,8 @@ var signup = (function(){
 			$('#su_company_location').show();
 			$('#su_company_location_input').prop('required', true);
 			$('#su_qualifications').hide();
+			$('#su_availability_input').prop('required', false);
+			$('#su_availability').hide();
 		}
 	};
 	

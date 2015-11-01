@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($updateUser) {
         Session::setSuccess('Details updated successfully!');
-        Session::redirect('/');
+        Session::redirect('/profile');
     }
 
     Session::setError('Unable to update details, please try again.');

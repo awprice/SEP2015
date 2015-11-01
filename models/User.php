@@ -14,7 +14,8 @@
             'contactNo' => 'contactno',
             'aboutMe' => 'aboutme',
             'qualifications' => 'qualifications',
-            'website' => 'website'
+            'website' => 'website',
+            'availability' => 'availability'
         ];
 
         /**
@@ -185,7 +186,7 @@
             }
 
             $mysql = new MySQL();
-            $results = $mysql->query('INSERT INTO user(id, usertype, name, email, password, contactno, aboutme, qualifications, website, companyname, companylocation) VALUES (:id, :usertype, :name, :email, :password, :contactno, :aboutme, :qualifications, :website, :companyname, :companylocation)', [
+            $results = $mysql->query('INSERT INTO user(id, usertype, name, email, password, contactno, aboutme, qualifications, website, companyname, companylocation, availability) VALUES (:id, :usertype, :name, :email, :password, :contactno, :aboutme, :qualifications, :website, :companyname, :companylocation, :availability)', [
                 ':id' => $id,
                 ':usertype' => $usertype,
                 ':name' => $details['name'],
@@ -196,8 +197,8 @@
                 ':qualifications' => $details['qualifications'],
                 ':website' => $details['website'],
                 ':companyname' => $details['companyname'],
-                ':companylocation' => $details['companylocation']
-
+                ':companylocation' => $details['companylocation'],
+                ':availability' => $details['availability'],
             ]);
 
             return $results['success'];
@@ -212,7 +213,6 @@
          */
         static function updateUser($details) {
 
-            $id = self::getId();
             $mysql = new MySQL();
             $results = $mysql->query('UPDATE user SET name = :name,
                 email = :email,
@@ -221,9 +221,10 @@
                 qualifications = :qualifications,
                 website = :website,
                 companyname = :companyname,
-                companylocation = :companylocation
+                companylocation = :companylocation,
+                availability = :availability
                 WHERE id = :id', [
-                ':id' => $id,
+                ':id' => self::getId(),
                 ':name' => $details['name'],
                 ':email' => $details['email'],
                 ':contactno' => $details['contactno'],
@@ -231,9 +232,11 @@
                 ':qualifications' => $details['qualifications'],
                 ':website' => $details['website'],
                 ':companyname' => $details['companyname'],
-                ':companylocation' => $details['companylocation']
+                ':companylocation' => $details['companylocation'],
+                ':availability' => $details['availability'],
 
             ]);
+
             return $results['success'];
         }
 

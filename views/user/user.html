@@ -35,15 +35,17 @@
                 {% if page.userProfile.usertype == "0" %}
                     <h4>{{ page.userProfile.qualifications }}</h4>
                     <h5 class="info-subheading">About</h5>
+                    <h4>{{ page.userProfile.availability }}</h4>
+                    <h5 class="info-subheading">Availability</h5>
                 {% endif %}
                 {% if page.userProfile.usertype == "1" %}
                     <h4>{{ page.userProfile.companyname }}</h4>
                     <h5 class="info-subheading">Company Name</h5>
                     <h4>{{ page.userProfile.companylocation }}</h4>
                     <h5 class="info-subheading">Company Location</h5>
+                    <h4><a href="{{ page.userProfile.website }}" target="_blank">{{ page.userProfile.website }}</a></h4>
+                    <h5 class="info-subheading">Website</h5>
                 {% endif %}
-                <h4><a href="{{ page.userProfile.website }}" target="_blank">{{ page.userProfile.website }}</a></h4>
-                <h5 class="info-subheading">Website</h5>
             </div>
             <div class="col-md-6">
                 {% if page.userProfile.usertype == "1" %}
