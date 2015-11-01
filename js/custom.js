@@ -59,7 +59,11 @@
 
         }
 
-
+        $('.rating').raty({
+            path: '/img',
+            score: 1,
+            scoreName: 'rating[score]'
+        });
 
     });
 

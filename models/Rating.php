@@ -77,4 +77,50 @@ class Rating {
 
     }
 
+    /**
+     * Get a specific rating
+     *
+     * @param $offerId
+     * @param $userId
+     * @return null
+     */
+    static function getRating($offerId, $userId) {
+
+        $mysql = new MySQL();
+        $results = $mysql->query('SELECT * FROM rating WHERE offer = :offer AND createdby = :createdby', [
+            ':offer' => $offerId,
+            ':createdby' => $userId,
+        ]);
+
+        if ($results['success'] == true && !empty($results['results']) && $results['results'] != null) {
+            return $results['results'];
+        }
+
+        return null;
+
+    }
+
+    /**
+     * Create array of stars for icons
+     *
+     * @param $rating
+     * @return array
+     */
+    static function getStarsArray($rating) {
+
+        $stars = [];
+        for ($x = 1; $x <= $rating; $x++) {
+            $stars[] = '1';
+        }
+        if (count($stars) != 5) {
+            $size = count($stars);
+            for ($x = 1; $x <= (5 - $size); $x++) {
+                $stars[] = '0';
+            }
+        }
+
+        return $stars;
+
+    }
+
 }

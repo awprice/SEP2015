@@ -96,6 +96,23 @@ class Offer {
 
     }
 
+    /**
+     * Complete an offer
+     *
+     * @param $id
+     * @return mixed
+     */
+    static function completeOffer($id) {
+
+        $mysql = new MySQL();
+        $results = $mysql->query('UPDATE offer SET status = 3 WHERE id = :id', [
+            ':id' => $id
+        ]);
+
+        return $results['success'];
+
+    }
+
 }
 
 ?>
