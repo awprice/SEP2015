@@ -4,7 +4,14 @@
     <form method="POST" style="width: 700px;">
         <h2>Complete Offer</h2>
         <br>
-        <p>This page is for when an offer has been completed. Please rate your experience working with the Employer and provide any relevant comments.</p>
+        <p>This page is for when an offer has been completed. Please rate your experience working with the
+            {% if page.user.usertype == "1" %}
+                Worker
+            {% endif %}
+            {% if page.user.usertype == "0" %}
+                Employer
+            {% endif %}
+            and provide any relevant comments.</p>
         <br>
 
         <div class="form-group has-feedback">
@@ -16,8 +23,14 @@
         <h3>Rating</h3>
         <div class="rating"></div>
         <br>
-        <p>Please provide a rating for your interaction with the Employer.</p>
-
+        <p>Please provide a rating for your interaction with the
+            {% if page.user.usertype == "1" %}
+                Worker
+            {% endif %}
+            {% if page.user.usertype == "0" %}
+                Employer
+            {% endif %}
+            .</p>
         <br>
         <br>
         <button class="btn btn-lg btn-primary" type="submit">Complete Offer</button>
