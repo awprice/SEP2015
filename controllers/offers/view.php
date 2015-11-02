@@ -31,6 +31,18 @@ $page['offers'] = $offers;
 
 foreach ($page['offers'] as &$offer) {
     $offer['ownerDetails'] = User::getUser($offer['owner']);
+
+    if ($offer['status'] == "3") {
+        $offer['yourRating'] = Rating::getRating($offer['id'], User::getId());
+        if ($offer['yourRating'] != null) {
+            $offer['yourRating']['rating'] = Rating::getStarsArray($offer['yourRating']['rating']);
+        }
+        $offer['theirRating'] = Rating::getRating($offer['id'], $offer['ownerDetails']['id']);
+        if ($offer['theirRating'] != null) {
+            $offer['theirRating']['rating'] = Rating::getStarsArray($offer['theirRating']['rating']);
+        }
+    }
+
 }
 
 ?>
